@@ -1,0 +1,5654 @@
+swagger: "2.0"
+info:
+  description: "This is a sample server Petstore server.  You can find out more about     Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).      For this sample, you can use the api key `special-key` to test the authorization     filters."
+  version: "1.0.0"
+  title: "DTP-DSA"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "apiteam@swagger.io"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "petstore.swagger.io"
+basePath: "/v2"
+tags:
+- name: "Users"
+  description: "All about user"
+- name: "Role"
+  description: "All about Role"
+- name: "Schedule"
+  description: "All about Schedule"
+- name: "User Role"
+  description: "All Fabout user role"
+- name: "Leave"
+  description: "All about Leave"
+- name: "Exchange Schedules"
+  description: "All about Exchange Schedules"
+- name: "Exchange Attendance"
+  description: "All about Exchange Attendance"
+- name: "Attendance"
+  description: "All about Attendance"
+- name: "Faq"
+  description: "All about Frequently Asked Questions"
+- name: "Setup Global"
+  description: "All about Setup Global"
+- name: "Request"
+  description: "All about Request"
+- name: "Service"
+  description: "All about Service"
+- name: "Request History"
+  description: "about Request History"
+- name: "Request Report"
+  description: "All about Request Report"
+- name: "Request Attachment"
+  description: "All about Request Attachment"
+schemes:
+- "https"
+- "http"
+paths:
+#Users
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/users:
+    get:
+      tags:
+      - "Users"
+      summary: "List"
+      description: "List User"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "keyword"
+        description: ""
+        type: "string"
+        required: true
+      responses:
+        200:
+          description: "Data Found"
+          schema:
+            $ref: "#/definitions/listUser"
+  
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/user/byId:
+    get:
+      tags:
+      - "Users"
+      summary: "By Id"
+      description: "User By Id"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "keyword"
+        description: ""
+        type: "string"
+        required: true
+      responses:
+        200:
+          description: "Data Found"
+          schema:
+            $ref: "#/definitions/userById"
+            
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/user/byEmail:
+    post:
+      tags:
+      - "Users"
+      summary: "By Email"
+      description: "User By Email"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+            $ref: "#/definitions/userByEmail"
+      responses:
+        200:
+          description: "Success Insert"
+          schema:
+            $ref: "#/definitions/userByEmail-200"
+  
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/user/create:
+    post:
+      tags:
+      - "Users"
+      summary: "Create"
+      description: "Create Users"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+            $ref: "#/definitions/createUsers"
+      responses:
+        200:
+          description: "Success Insert"
+          schema:
+            $ref: "#/definitions/createUsers-200"
+            
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/user/update:
+    put:
+      tags:
+      - "Users"
+      summary: "Update"
+      description: "Update Users"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+            $ref: "#/definitions/updateUsers"
+      responses:
+        200:
+          description: "Success Update"
+          schema:
+            $ref: "#/definitions/updateUsers-200"
+            
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/user/activeDeactive:
+    put:
+      tags:
+      - "Users"
+      summary: "Acive/Deactive Users"
+      description: "Acive/Deactive Users"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+            $ref: "#/definitions/activeDeactiveUsers"
+      responses:
+        200:
+          description: "Your Request Has Been Processed"
+          schema:
+            $ref: "#/definitions/activeDeactiveUsers-200"
+  
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/user/change-password:
+    put:
+      tags:
+      - "Users"
+      summary: "Change Password"
+      description: "Change Password Users"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+            $ref: "#/definitions/changePassUsers"
+      responses:
+        200:
+          description: "Success Change Password"
+          schema:
+            $ref: "#/definitions/changePassUsers-200"
+    
+            
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/user/remove:
+    delete:
+      tags:
+      - "Users"
+      summary: "Remove"
+      description: "Remove Users"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+          $ref: "#/definitions/removeUsers"
+      responses:
+        200:
+          description: "Succes Remove id:=uuid()"
+          schema:
+            $ref: "#/definitions/removeUsers-200"
+  
+
+#Role            
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/role:
+    get:
+      tags:
+      - "Role"
+      summary: "List"
+      description: "List Role"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "keyword"
+        description: ""
+        type: "string"
+        required: true
+      responses:
+        200:
+          description: "Data Found"
+          schema:
+            $ref: "#/definitions/listRole"
+            
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/role/create:
+    post:
+      tags:
+      - "Role"
+      summary: "Create"
+      description: "Create Role"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+            $ref: "#/definitions/createRole"
+      responses:
+        200:
+          description: "Success Insert"
+          schema:
+            $ref: "#/definitions/createRole-200"
+            
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/role/update:
+    put:
+      tags:
+      - "Role"
+      summary: "Update"
+      description: "Update Role"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+            $ref: "#/definitions/updateRole"
+      responses:
+        200:
+          description: "Success Update"
+          schema:
+            $ref: "#/definitions/updateRole-200"
+            
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/role/remove:
+    delete:
+      tags:
+      - "Role"
+      summary: "Remove"
+      description: "Remove Role"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+            $ref: "#/definitions/removeRole"
+      responses:
+        200:
+          description: "Succes Remove id:s"
+          schema:
+            $ref: "#/definitions/removeRole-200"
+            
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/role/byid:
+    get:
+      tags:
+      - "Role"
+      summary: "By Id"
+      description: "Role By Id"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "keyword"
+        description: ""
+        type: "string"
+        required: true
+      responses:
+        200:
+          description: "Data Found"
+          schema:
+            $ref: "#/definitions/roleById"
+            
+#Schedule
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/schedulesList:
+    get:
+      tags:
+      - "Schedule"
+      summary: "list of Schedule"
+      description: "list of Schedule"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "keyword"
+        description: ""
+        type: "string"
+        required: true
+      responses:
+          200:
+            description: "Your Request Has Been Processed"
+            schema:
+              $ref: "#/definitions/listSchedule"
+              
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/schedule/getById:
+    get:
+      tags:
+      - "Schedule"
+      summary: "get By Id"
+      description: "get By Id Schedule"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "keyword"
+        description: ""
+        type: "string"
+        required: true
+      responses:
+          200:
+            description: "Your Request Has Been Processed"
+            schema:
+              $ref: "#/definitions/ByIdSchedule"
+              
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/schedule/agent:
+    post:
+      tags:
+      - "Schedule"
+      summary: "get by Agent"
+      description: "get by Agent Schedule"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+              $ref: "#/definitions/AgentSchedule"
+      responses:
+          200:
+            description: "Your Request Has Been Processed"
+            schema:
+              $ref: "#/definitions/AgentSchedule200"
+              
+  # create#
+  
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/schedule/update:
+    put:
+      tags:
+      - "Schedule"
+      summary: "update schedule"
+      description: "update Schedule"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+              $ref: "#/definitions/UpdateSchedule"
+      responses:
+          200:
+            description: "Your Request Has Been Processed"
+            schema:
+              $ref: "#/definitions/UpdateSchedule200"
+              
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/schedule/remove:
+    delete:
+      tags:
+      - "Schedule"
+      summary: "remove schedule"
+      description: "remove Schedule"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+              $ref: "#/definitions/removeSchedule"
+      responses:
+          200:
+            description: "Your Request Has Been Processed"
+            schema:
+              $ref: "#/definitions/UpdateSchedule200"
+    
+              
+#User Role
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/user-role/listUserRole:
+    get:
+      tags:
+      - "User Role"
+      summary: "list of user role"
+      description: "list of user role"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "keyword"
+        description: ""
+        type: "string"
+        required: true
+      responses:
+          200:
+            description: "Your Request Has Been Processed"
+            schema:
+              $ref: "#/definitions/listUserRole"
+              
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/user-role/createUserRole:
+    post:
+      tags:
+      - "User Role"
+      summary: "create user role"
+      description: "create user role"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+              $ref: "#/definitions/CreateURole"
+      responses:
+          200:
+            description: "Your Request Has Been Processed"
+            schema:
+              $ref: "#/definitions/CreateURole200"
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/user-role/updateUserRole:
+    put:
+      tags:
+      - "User Role"
+      summary: "update user role"
+      description: "update user role"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+              $ref: "#/definitions/UpdateURole"
+      responses:
+          200:
+            description: "Your Request Has Been Processed"
+            schema:
+              $ref: "#/definitions/UpdateURole200"
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/user-role/removeUserRole:
+    delete:
+      tags:
+      - "User Role"
+      summary: "delete user role"
+      description: "delete user role"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+              $ref: "#/definitions/DeleteURole"
+      responses:
+          200:
+            description: "Your Request Has Been Processed"
+            schema:
+              $ref: "#/definitions/DeleteURole200"
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/user-role/getByIdRole:
+    get:
+      tags:
+      - "User Role"
+      summary: "get by id"
+      description: "get by id"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "keyword"
+        description: ""
+        type: "string"
+        required: true
+      responses:
+          200:
+            description: "Your Request Has Been Processed"
+            schema:
+              $ref: "#/definitions/userRoleById"
+              
+#Leave
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/listLeave:
+    get:
+      tags:
+      - "Leave"
+      summary: "list leave"
+      description: "list leave"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "keyword"
+        description: ""
+        type: "string"
+        required: true
+      responses:
+          200:
+            description: "Your Request Has Been Processed"
+            schema:
+              $ref: "#/definitions/ListLeave"
+              
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/leaveById:
+    get:
+      tags:
+      - "Leave"
+      summary: "get leave by id"
+      description: "get leave by id"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "keyword"
+        description: ""
+        type: "string"
+        required: true
+      responses:
+          200:
+            description: "Your Request Has Been Processed"
+            schema:
+              $ref: "#/definitions/LeaveById"
+              
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id//api/leaveByAgentId:
+    post:
+      tags:
+      - "Leave"
+      summary: "Leave By Agent Id"
+      description: "Leave By Agent Id"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "keyword"
+        description: ""
+        type: "string"
+        required: true
+      responses:
+          200:
+            description: "Your Request Has Been Processed"
+            schema:
+              $ref: "#/definitions/LeaveByAgentId"
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/leave/create:
+    post:
+      tags:
+      - "Leave"
+      summary: "Create leave"
+      description: "Create leave"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+              $ref: "#/definitions/CreateLeave"
+      responses:
+          200:
+            description: "Your Request Has Been Processed"
+            schema:
+              $ref: "#/definitions/CreateLeave200"
+              
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/leave/update:
+    put:
+      tags:
+      - "Leave"
+      summary: "Update leave"
+      description: "Update leave"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+              $ref: "#/definitions/UpdateLeave"
+      responses:
+          200:
+            description: "Your Request Has Been Processed"
+            schema:
+              $ref: "#/definitions/UpdateLeave200"
+              
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/leave/reject:
+    put:
+      tags:
+      - "Leave"
+      summary: "Reject leave"
+      description: "Reject leave"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+              $ref: "#/definitions/RejectLeave"
+      responses:
+          200:
+            description: "Your Request Has Been Processed"
+            schema:
+              $ref: "#/definitions/RejectLeave200"
+              
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/leave/approve:
+    put:
+      tags:
+      - "Leave"
+      summary: "Approve leave"
+      description: "Approve leave"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+              $ref: "#/definitions/ApproveLeave"
+      responses:
+          200:
+            description: "Your Request Has Been Processed"
+            schema:
+              $ref: "#/definitions/ApproveLeave200"
+              
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/leave/remove:
+    delete:
+      tags:
+      - "Leave"
+      summary: "Remove leave"
+      description: "Remove leave"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+              $ref: "#/definitions/RemoveLeave"
+      responses:
+          200:
+            description: "Your Request Has Been Processed"
+            schema:
+              $ref: "#/definitions/RemoveLeave200"
+
+#Exchange Schedules
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/listES:
+    get:
+      tags:
+      - "Exchange Schedules"
+      summary: "Get list Exchange Schedule"
+      description: "Get list Exchange Schedule"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "key"
+        description: ""
+        type: "string"
+        required: true
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/ListExSchedule"
+            
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/exschedule/ByIDES:
+    get:
+      tags:
+      - "Exchange Schedules"
+      summary: "get By ID"
+      description: "get By ID Exchange Schedule"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "keyword"
+        description: ""
+        type: "string"
+        required: true
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/ByIDExSchedule"
+            
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/exschedule/byAgentES:
+    post:
+      tags:
+      - "Exchange Schedules"
+      summary: "get By Agent ID"
+      description: "get By Agent ID Exchange Schedule"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+            $ref: "#/definitions/byAgentExSchedule"
+      responses:
+        200:
+          description: "Success Insert"
+          schema:
+            $ref: "#/definitions/byAgentExSchedule200"
+            
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/exSchedule/createES:
+    post:
+      tags:
+      - "Exchange Schedules"
+      summary: "Create Exchange Schedule"
+      description: "Create Exchange Schedule"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+            $ref: "#/definitions/CreateExSchedule"
+      responses:
+        200:
+          description: "Success Insert"
+          schema:
+            $ref: "#/definitions/CreateExSchedule200"
+            
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/exchange-schedule/updateES:
+    put:
+      tags:
+      - "Exchange Schedules"
+      summary: "Update"
+      description: "Update Exchange Schedules"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+              $ref: "#/definitions/updateES"
+      responses:
+          200:
+            description: "Success Update"
+            schema:
+              $ref: "#/definitions/updateES-200"
+              
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/exchange-schedule/rejectES:
+    put:
+      tags:
+      - "Exchange Schedules"
+      summary: "Reject"
+      description: "Reject Exchange Schedules"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+              $ref: "#/definitions/rejectES"
+      responses:
+          200:
+            description: "Success Reject"
+            schema:
+              $ref: "#/definitions/rejectES-200"
+              
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/exchange-schedule/approveES:
+    put:
+      tags:
+      - "Exchange Schedules"
+      summary: "Approve"
+      description: "Approve Exchange Schedules"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+              $ref: "#/definitions/approveES"
+      responses:
+          200:
+            description: "Success Approve"
+            schema:
+              $ref: "#/definitions/approveES-200"
+  
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/exchange-schedule/remove:
+    delete:
+      tags:
+      - "Exchange Schedules"
+      summary: "Remove"
+      description: "Remove Exchange Schedules"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+              $ref: "#/definitions/removeES"
+      responses:
+          200:
+            description: "Succes Remove id:c949d50b-8885-11e9-ad15-e03f49b834fa"
+            schema:
+              $ref: "#/definitions/removeES-200"
+            
+#Exchange Attendance            
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/exchange-schedules:
+    get:
+      tags:
+      - "Exchange Attendance"
+      summary: "List"
+      description: "List Exchange Attendance"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "keyword"
+        description: ""
+        type: "string"
+        required: true
+      responses:
+        200:
+          description: "Data Found"
+          schema:
+            $ref: "#/definitions/listEA"
+            
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/exchange-schedule/getById:
+    get:
+      tags:
+      - "Exchange Attendance"
+      summary: "By Id"
+      description: "Get By Id"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "keyword"
+        description: ""
+        type: "string"
+        required: true
+      responses:
+        200:
+          description: "Data Found"
+          schema:
+            $ref: "#/definitions/getByIdEA"
+            
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/exchange-schedule/create:
+    post:
+      tags:
+      - "Exchange Attendance"
+      summary: "Create"
+      description: "Create Exchange Attendance"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+            $ref: "#/definitions/createEA"
+      responses:
+        200:
+          description: "Success Insert"
+          schema:
+            $ref: "#/definitions/createEA-200"
+    
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/exchange-schedule/update:
+    put:
+      tags:
+      - "Exchange Attendance"
+      summary: "Update"
+      description: "Update Exchange Attendance"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+          $ref: "#/definitions/updateEA"
+      responses:
+        200:
+          description: "Success Update"
+          schema:
+            $ref: "#/definitions/updateEA-200"
+            
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/exchange-schedule/reject:
+    put:
+      tags:
+      - "Exchange Attendance"
+      summary: "Reject"
+      description: "Reject Exchange Attendance"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+          $ref: "#/definitions/rejectEA"
+      responses:
+        200:
+          description: "Success Reject"
+          schema:
+            $ref: "#/definitions/rejectEA-200"
+            
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/exchange-schedule/approve:
+    put:
+      tags:
+      - "Exchange Attendance"
+      summary: "Approve"
+      description: "Approve Exchange Attendance"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+          $ref: "#/definitions/approveEA"
+      responses:
+        200:
+          description: "Success Approve"
+          schema:
+            $ref: "#/definitions/approveEA-200"
+            
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/exchange-schedule/removeES:
+     delete:
+      tags:
+      - "Exchange Attendance"
+      summary: "Remove"
+      description: "Remove Exchange Attendance"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+          $ref: "#/definitions/removeEA"
+      responses:
+        200:
+          description: "Success Remove"
+          schema:
+            $ref: "#/definitions/removeEA-200"
+
+#Attendance
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/attendance:
+    get:
+      tags:
+      - "Attendance"
+      summary: "Attendance"
+      description: "Attendance List"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "keyword"
+        description: ""
+        type: "string"
+        required: true
+      responses:
+          200:
+            description: "Your Request Has Been Processed"
+            schema:
+              $ref: "#/definitions/AttendanceList"
+  
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/attendanceById:
+    get:
+      tags:
+      - "Attendance"
+      summary: "attendance by id"
+      description: "attendance by id"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "keyword"
+        description: ""
+        type: "string"
+        required: true
+      responses:
+          200:
+            description: "Your Request Has Been Processed"
+            schema:
+              $ref: "#/definitions/AttendanceById"
+              
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/attendanceAgent:
+    post:
+      tags:
+      - "Attendance"
+      summary: "Attendance by Agent"
+      description: "Attendance by Agent"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+              $ref: "#/definitions/AttendanceAgent"
+      responses:
+          200:
+            description: "Your Request Has Been Processed"
+            schema:
+              $ref: "#/definitions/AttendanceAgent200"
+  
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/attendance/check-in:
+    post:
+      tags:
+      - "Attendance"
+      summary: "Attendance Check In"
+      description: "Attendance Check In"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+              $ref: "#/definitions/AttendanceCI"
+      responses:
+          200:
+            description: "Your Request Has Been Processed"
+            schema:
+              $ref: "#/definitions/AttendanceCI200"
+              
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/attendance/check-out:
+    post:
+      tags:
+      - "Attendance"
+      summary: "Attendance Check Out"
+      description: "Attendance Check Out"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+              $ref: "#/definitions/AttendanceCO"
+      responses:
+          200:
+            description: "Your Request Has Been Processed"
+            schema:
+              $ref: "#/definitions/AttendanceCO200"
+              
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/attendance/update:
+    put:
+      tags:
+      - "Attendance"
+      summary: "Update Leave"
+      description: "Update Leave"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+          $ref: "#/definitions/updateAttendance"
+      responses:
+        200:
+          description: "Success Update"
+          schema:
+            $ref: "#/definitions/updateAttendance-200"
+              
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/attendace/reject:
+    put:
+      tags:
+      - "Attendance"
+      summary: "Reject"
+      description: "Reject Leave"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+          $ref: "#/definitions/rejectAttendance"
+      responses:
+        200:
+          description: "Success Reject Leave"
+          schema:
+            $ref: "#/definitions/rejectAttendance-200"
+  
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/attendance/approve:
+    put:
+      tags:
+      - "Attendance"
+      summary: "Approve"
+      description: "Approve Leave"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+          $ref: "#/definitions/approveAttendance"
+      responses:
+        200:
+          description: "Success Approve Leave"
+          schema:
+            $ref: "#/definitions/approveAttendance-200"
+  
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/attendance/remove:
+    delete:
+      tags:
+      - "Attendance"
+      summary: "Remove"
+      description: "Remove Leave"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+          $ref: "#/definitions/removeAttendance"
+      responses:
+        200:
+          description: "Succes Remove id:7436542c-887c-11e9-ad15-e03f49b834fa"
+          schema:
+            $ref: "#/definitions/removeAttendance-200"
+            
+#Faq
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/ListFaq:
+    get:
+      tags:
+      - "Faq"
+      summary: "List of Frequently Asked Questions"
+      description: "Frequently Asked Questions"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "keyword"
+        description: ""
+        type: "string"
+        required: true
+      responses:
+          200:
+            description: "Your Request Has Been Processed"
+            schema:
+              $ref: "#/definitions/ListFaq"
+              
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/faq/create:
+    post:
+      tags:
+      - "Faq"
+      summary: "Create Frequently Asked Questions"
+      description: "Create Frequently Asked Questions"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+            $ref: "#/definitions/CreateFaq"
+      responses:
+        200:
+          description: "Your Request Has Been Processed"
+          schema:
+            $ref: "#/definitions/CreateFaq200"
+            
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/faq/update:
+    put:
+      tags:
+      - "Faq"
+      summary: "Update Frequently Asked Questions"
+      description: "Update Frequently Asked Questions"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+            $ref: "#/definitions/UpdateFaq"
+      responses:
+        200:
+          description: "Your Request Has Been Processed"
+          schema:
+            $ref: "#/definitions/UpdateFaq200"
+  
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/faq/remove:
+    delete:
+      tags:
+      - "Faq"
+      summary: "Delete"
+      description: "Delete Frequently Asked Questions"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+            $ref: "#/definitions/DeleteFaq"
+      responses:
+        200:
+          description: "Your Request Has Been Processed"
+          schema:
+            $ref: "#/definitions/DeleteFaq200"
+            
+#Setup Global
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/setups:
+    get:
+      tags:
+      - "Setup Global"
+      summary: "List"
+      description: "List Setup Global"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "keyword"
+        description: ""
+        type: "string"
+        required: true
+      responses:
+        200:
+          description: "Data Found"
+          schema:
+            $ref: "#/definitions/listSetupGlobal"
+            
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/setup/getSetupId:
+    get:
+      tags:
+      - "Setup Global"
+      summary: "By Id"
+      description: "Get Setup By Id"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "keyword"
+        description: ""
+        type: "string"
+        required: true
+      responses:
+        200:
+          description: "Data Found"
+          schema:
+            $ref: "#/definitions/getSetupById"
+            
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/visi-misi:
+    get:
+      tags:
+      - "Setup Global"
+      summary: "get visi misi"
+      description: "get visi misi Setup Global"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "keyword"
+        description: ""
+        type: "string"
+        required: true
+      responses:
+        200:
+          description: "Data Found"
+          schema:
+            $ref: "#/definitions/VisiMisiSetupGlobal"
+
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/about-dsa:
+    get:
+      tags:
+      - "Setup Global"
+      summary: "get About Us"
+      description: "get About Us Setup Global"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "keyword"
+        description: ""
+        type: "string"
+        required: true
+      responses:
+        200:
+          description: "Data Found"
+          schema:
+            $ref: "#/definitions/AboutUsSetupGlobal"
+
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/footer:
+    get:
+      tags:
+      - "Setup Global"
+      summary: "get Footer"
+      description: "get Footer Setup Global"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "keyword"
+        description: ""
+        type: "string"
+        required: true
+      responses:
+        200:
+          description: "Data Found"
+          schema:
+            $ref: "#/definitions/FooterSetupGlobal"
+
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/home-banner:
+    get:
+      tags:
+      - "Setup Global"
+      summary: "get Home Banner"
+      description: "get Home Banner Global"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "keyword"
+        description: ""
+        type: "string"
+        required: true
+      responses:
+        200:
+          description: "Data Found"
+          schema:
+            $ref: "#/definitions/HomeBannerSetupGlobal"
+            
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/setup/create:
+    post:
+      tags:
+      - "Setup Global"
+      summary: "Create"
+      description: "Create Setup Global"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+          $ref: "#/definitions/createSetupGlobal"
+      responses:
+        200:
+          description: "Success Insert"
+          schema:
+            $ref: "#/definitions/createSetupGlobal-200"
+            
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/setup/update:
+    put:
+      tags:
+      - "Setup Global"
+      summary: "Update"
+      description: "Update Setup Global"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+          $ref: "#/definitions/updateSetupGlobal"
+      responses:
+        200:
+          description: "Success Update"
+          schema:
+            $ref: "#/definitions/updateSetupGlobal-200"
+  
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/setup/remove:
+    delete:
+      tags:
+      - "Setup Global"
+      summary: "get Home Banner"
+      description: "get Home Banner Global"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+            $ref: "#/definitions/DeleteSG"
+      responses:
+        200:
+          description: "Your Request Has Been Processed"
+          schema:
+            $ref: "#/definitions/DeleteSG200"
+            
+#Request
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/request/listRequest:
+    get:
+      tags:
+      - "Request"
+      summary: "list of request"
+      description: "list of request"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "keyword"
+        description: ""
+        type: "string"
+        required: true
+      responses:
+          200:
+            description: "Your Request Has Been Processed"
+            schema:
+              $ref: "#/definitions/ListRequest"
+              
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/request/remove:
+    delete:
+      tags:
+      - "Request"
+      summary: "Delete Request"
+      description: "Delete Request"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+              $ref: "#/definitions/DeleteRequest"
+      responses:
+          200:
+            description: "Your Request Has Been Processed"
+            schema:
+              $ref: "#/definitions/DeleteReq200"
+              
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/request/create:
+    post:
+      tags:
+      - "Request"
+      summary: "Create Request"
+      description: "Create Request"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+              $ref: "#/definitions/CreateRequest"
+      responses:
+          200:
+            description: "Your Request Has Been Processed"
+            schema:
+              $ref: "#/definitions/CreateReq200"
+              
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/request/update:
+    put:
+      tags:
+      - "Request"
+      summary: "Update Request"
+      description: "Update Request"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+              $ref: "#/definitions/UpdateRequest"
+      responses:
+          200:
+            description: "Your Request Has Been Processed"
+            schema:
+              $ref: "#/definitions/UpdateReq200"
+  
+#Service
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/service:
+    get:
+      tags:
+      - "Service"
+      summary: "List"
+      description: "List Service"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "keyword"
+        description: ""
+        type: "string"
+        required: true
+      responses:
+        200:
+          description: "Data Found"
+          schema:
+            $ref: "#/definitions/listService"
+            
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/service/create:
+    post:
+      tags:
+      - "Service"
+      summary: "Create"
+      description: "Create Service"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+          $ref: "#/definitions/createService"
+      responses:
+        200:
+          description: "Success Insert"
+          schema:
+            $ref: "#/definitions/createService-200"
+            
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/service/update:
+    put:
+      tags:
+      - "Service"
+      summary: "Update Service"
+      description: "Update Service"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+              $ref: "#/definitions/UpdateService"
+      responses:
+          200:
+            description: "Your Request Has Been Processed"
+            schema:
+              $ref: "#/definitions/UpdateService200"
+            
+#Request History
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/request-history/listReqHistory:
+    get:
+      tags:
+      - "Request History"
+      summary: "List of Request History"
+      description: "List of Request History"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "keyword"
+        description: ""
+        type: "string"
+        required: true
+      responses:
+          200:
+            description: "Your Request Has Been Processed"
+            schema:
+              $ref: "#/definitions/ListReqH"
+  
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/request-history/update:
+    put:
+      tags:
+      - "Request History"
+      summary: "Update Request History"
+      description: "Update Request History"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+              $ref: "#/definitions/UpdateReqH"
+      responses:
+          200:
+            description: "Your Request Has Been Processed"
+            schema:
+              $ref: "#/definitions/UpdateReqH200"
+              
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/request-history/remove:
+    delete:
+      tags:
+      - "Request History"
+      summary: "Delete Request History"
+      description: "Delete Request History"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+              $ref: "#/definitions/DeleteReqH"
+      responses:
+          200:
+            description: "Your Request Has Been Processed"
+            schema:
+              $ref: "#/definitions/DeleteReqH200"
+              
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/request-history/create:
+    post:
+      tags:
+      - "Request History"
+      summary: "Create Request History"
+      description: "Create Request History"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+              $ref: "#/definitions/CreateReqH"
+      responses:
+          200:
+            description: "Your Request Has Been Processed"
+            schema:
+              $ref: "#/definitions/CreateReqH200"
+              
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/request-history/ReqHById:
+    get:
+      tags:
+      - "Request History"
+      summary: "Get Request History By Id"
+      description: "Get Request History By Id"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "keyword"
+        description: ""
+        type: "string"
+        required: true
+      responses:
+          200:
+            description: "Your Request Has Been Processed"
+            schema:
+              $ref: "#/definitions/ReqHistoryById"
+            
+#Request Report
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/request-listReport:
+    get:
+      tags:
+      - "Request Report"
+      summary: "List"
+      description: "List Request Report"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "keyword"
+        description: ""
+        type: "string"
+        required: true
+      responses:
+        200:
+          description: "Data Found"
+          schema:
+            $ref: "#/definitions/listRequestReport"
+  
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/request-report/create:
+    post:
+      tags:
+      - "Request Report"
+      summary: "Create"
+      description: "Create Request Report"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+          $ref: "#/definitions/createRequestReport"
+      responses:
+        200:
+          description: "Success Insert"
+          schema:
+            $ref: "#/definitions/createRequestReport-200"
+            
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/request-report/update:
+    put:
+      tags:
+      - "Request Report"
+      summary: "Update"
+      description: "Update Request Report"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+          $ref: "#/definitions/updateRequestReport"
+      responses:
+        200:
+          description: "Success Update"
+          schema:
+            $ref: "#/definitions/updateRequestReport-200"
+            
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/request-report/remove:
+    delete:
+      tags:
+      - "Request Report"
+      summary: "Delete"
+      description: "Delete Request Report"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+          $ref: "#/definitions/deleteRequestReport"
+      responses:
+        200:
+          description: "Succes Remove id:8a9541f0-93fc-11e9-9ae2-5d381d154beb"
+          schema:
+            $ref: "#/definitions/deleteRequestReport-200"
+            
+#Request Attachment
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/request-attachment/listAttacment:
+    get:
+      tags:
+      - "Request Attachment"
+      summary: "list Request Attachment"
+      description: "list Request Attachment"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "keyword"
+        description: ""
+        type: "string"
+        required: true
+      responses:
+          200:
+            description: "Your Request Has Been Processed"
+            schema:
+              $ref: "#/definitions/ReqAttList"
+              
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/request-attachment/update:
+    put:
+      tags:
+      - "Request Attachment"
+      summary: "Update Request Attachment"
+      description: "Update Request Attachment"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+              $ref: "#/definitions/UpdateReqAtt"
+      responses:
+          200:
+            description: "Your Request Has Been Processed"
+            schema:
+              $ref: "#/definitions/UpdateReqAtt200"
+              
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/request-attachment/remove:
+    delete:
+      tags:
+      - "Request Attachment"
+      summary: "Delete Request Attachment"
+      description: "Delete Request Attachment"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+              $ref: "#/definitions/DeleteReqAtt"
+      responses:
+          200:
+            description: "Your Request Has Been Processed"
+            schema:
+              $ref: "#/definitions/DeleteReqAtt200"
+              
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/request-attachment/create:
+    post:
+      tags:
+      - "Request Attachment"
+      summary: "Create Request Attachment"
+      description: "Create Request Attachment"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "keyword"
+        description: ""
+        required: true
+        schema:
+              $ref: "#/definitions/CreateReqAtt"
+      responses:
+          200:
+            description: "Your Request Has Been Processed"
+            schema:
+              $ref: "#/definitions/CreateReqAtt200"
+  
+  /dtp-dsa-backend-dev.vsan-apps.playcourt.id/api/ReqAttById:
+    get:
+      tags:
+      - "Request Attachment"
+      summary: "By Id"
+      description: "Get Request Attachment By Id"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "keyword"
+        description: ""
+        type: "string"
+        required: true
+      responses:
+          200:
+            description: "Your Request Has Been Processed"
+            schema:
+              $ref: "#/definitions/ReqAttById"
+  
+definitions:
+#Users
+  listUser:
+    properties:
+      code:
+        type: "string"
+        example: "200"
+      content:
+        type: "array"
+        items:
+         $ref: "#/definitions/listUser"
+        example:
+        - id: "4e7bb9b0-9249-11e9-a2af-8b7909e6c274"
+          name: "Ariani QA"
+          email: "arianifitriaaa@gmail.com"
+          password: "coba"
+          phone: null
+          status: 1
+          created_at: "2019-06-19T04:18:21.000Z"
+          updated_at: null
+        - id: "02013490-9634-11e9-afc7-f10dfe709c5b"
+          name: "devy"
+          email: "devyanugrah999@gmail.com"
+          password: "4d5e2a885578299e5a5902ad295447c6"
+          phone: null
+          status: 1
+          created_at: "2019-06-24T03:55:57.000Z"
+          updated_at: null
+        - id: "955ba420-9628-11e9-bd40-c7065795b994"
+          name: "rizky"
+          email: "rizky@gmail.com"
+          password: "DevQA12345"
+          phone: null
+          status: 1
+          created_at: "2019-06-24T02:34:26.000Z"
+          updated_at: null
+        - id: "abadf8a0-9631-11e9-afc7-f10dfe709c5b"
+          name: "rizky DEv"
+          email: "rizkydev@gmail.com"
+          password: "bf5201c7ee1e734f398a9c5dc9076180"
+          phone: null
+          status: 1
+          created_at: "2019-06-19T03:58:03.000Z"
+          updated_at: null
+        - id: "78d9daa0-9246-11e9-a2af-8b7909e6c274"
+          name: "Test"
+          email: "arianifitria@gmail.com"
+          password: "test"
+          phone: null
+          status: 1
+          created_at: "2019-06-28T02:17:14.000Z"
+          updated_at: null
+        - id: "d8610f60-994a-11e9-930c-c11905d77c47"
+          name: "Test"
+          email: "test@gmail.com"
+          password: "098f6bcd4621d373cade4e832627b4f6"
+          phone: null
+          status: 1
+          created_at: "2019-06-19T04:00:06.000Z"
+          updated_at: null
+        - id: "c1ee0b80-9246-11e9-a2af-8b7909e6c274"
+          name: "Test"
+          email: "test@gmail.com"
+          password: "test"
+          phone: null
+          status: 1
+          created_at: "2019-06-27T09:41:31.000Z"
+          updated_at: null
+        - id: "be92d4a0-98bf-11e9-930c-c11905d77c47"
+          name: "Test"
+          email: "test@gmail.com"
+          password: "098f6bcd4621d373cade4e832627b4f6"
+          phone: null
+          status: 1
+          created_at: "2019-06-27T09:41:31.000Z"
+          updated_at: null
+        - id: "88ed6bb0-9628-11e9-bd40-c7065795b994"
+          name: "Test"
+          email: "test@gmail.com"
+          password: "test"
+          phone: null
+          status: 1
+          created_at: "2019-06-24T02:34:05.000Z"
+          updated_at: null
+        - id: "7b907fc0-9623-11e9-bd40-c7065795b994"
+          name: "Test"
+          email: "test@gmail.com"
+          password: "test"
+          phone: null
+          status: 1
+          created_at: "2019-06-24T01:57:55.000Z"
+          updated_at: null
+        - id: "01a65ba0-98ab-11e9-a0d3-d7af762ba16f"
+          name: "Test"
+          email: "test@gmail.com"
+          password: "098f6bcd4621d373cade4e832627b4f6"
+          phone: null
+          status: 1
+          created_at: "2019-06-27T07:12:48.000Z"
+          updated_at: null
+        - id: "73302940-9635-11e9-afc7-f10dfe709c5b"
+          name: "Test"
+          email: "test@gmail.com"
+          password: "098f6bcd4621d373cade4e832627b4f6"
+          phone: null
+          status: 1
+          created_at: "2019-06-24T04:06:16.000Z"
+          updated_at: null
+        - id: "71786530-9316-11e9-a2af-8b7909e6c274"
+          name: "Test"
+          email: "test@gmail.com"
+          password: "test"
+          phone: null
+          status: 1
+          created_at: "2019-06-20T04:46:46.000Z"
+          updated_at: null
+        - id: "545392c0-9246-11e9-a2af-8b7909e6c274"
+          name: "Test"
+          email: "test@gmail.com"
+          password: "test"
+          phone: null
+          status: 1
+          created_at: "2019-06-19T03:57:02.000Z"
+          updated_at: null
+        - id: "16dbe490-98ab-11e9-a0d3-d7af762ba16f"
+          name: "Test"
+          email: "test@gmail.com"
+          password: "098f6bcd4621d373cade4e832627b4f6"
+          phone: null
+          status: 1
+          created_at: "2019-06-27T07:13:23.000Z"
+          updated_at: null
+        - id: "090be010-9246-11e9-a2af-8b7909e6c274"
+          name: "Test"
+          email: "test@gmail.com"
+          password: "test"
+          phone: null
+          status: 1
+          created_at: "2019-06-19T03:54:56.000Z"
+          updated_at: null
+        - id: "1ff45750-9e06-11e9-9453-c7b12f58c028"
+          name: "Test insert new"
+          email: "test@gmail.com"
+          password: "098f6bcd4621d373cade4e832627b4f6"
+          phone: null
+          status: 1
+          created_at: "2019-07-04T02:47:55.000Z"
+          updated_at: null
+        - id: "d9a40c20-9e2b-11e9-a8f3-4b85698e859d"
+          name: "Test insert new"
+          email: "test@gmail.com"
+          password: "098f6bcd4621d373cade4e832627b4f6"
+          phone: "11111"
+          status: 1
+          created_at: "2019-07-04T02:47:55.000Z"
+          updated_at: null
+        - id: "090be010-9246-11e9-a2af-8b7909e6c274"
+          name: "Zuliansyah"
+          email: "zulian.fathur@gmail.com"
+          password: "11dea2140ba5bbceaa28e8ef12eaa627"
+          phone: null
+          status: 1
+          created_at: "2019-05-31T03:04:59.000Z"
+          updated_at: "2019-05-31T03:04:59.000Z"
+      totalItems: 
+        type: "string"
+        example: "26"
+      message: 
+        type: "string"
+        example: "Data Found"
+      
+  userById:
+    properties:
+      code:
+        type: "string"
+        example: "200"
+      content:
+        type: "array"
+        items:
+         $ref: "#/definitions/userById"
+        example:
+        - id: "c1ee0b80-9246-11e9-a2af-8b7909e6c274"
+          name: "Test"
+          email: "test@gmail.com"
+          password: "test"
+          phone: null
+          status: 1
+          created_at: "2019-06-19T04:00:06.000Z"
+          updated_at: null
+      totalItems: 
+        type: "string"
+        example: "1"
+      message: 
+        type: "string"
+        example: "Data Found"
+  
+  userByEmail:
+    type: "object"
+    properties:
+      email: 
+        type: "string"
+        example: "test@gmail.com"
+  userByEmail-200:
+    properties:
+      code:
+        type: "string"
+        example: "200"
+      content:
+        type: "array"
+        items:
+         $ref: "#/definitions/userByEmail-200"
+        example:
+        - id: "01a65ba0-98ab-11e9-a0d3-d7af762ba16f"
+          name: "Test"
+          email: "test@gmail.com"
+          password: "098f6bcd4621d373cade4e832627b4f6"
+          phone: null
+          status: 1
+          created_at: "2019-06-27T07:12:48.000Z"
+          updated_at: null
+        - id: "090be010-9246-11e9-a2af-8b7909e6c274"
+          name: "Test"
+          email: "test@gmail.com"
+          password: "test"
+          phone: null
+          status: 1
+          created_at: "2019-06-19T03:54:56.000Z"
+          updated_at: null
+        - id: "16dbe490-98ab-11e9-a0d3-d7af762ba16f"
+          name: "Test"
+          email: "test@gmail.com"
+          password: "098f6bcd4621d373cade4e832627b4f6"
+          phone: null
+          status: 1
+          created_at: "2019-06-27T07:13:23.000Z"
+          updated_at: null
+        - id: "222d0920-8e77-11e9-a2d1-93980836ea9e"
+          name: "Test"
+          email: "test@gmail.com"
+          password: "test"
+          phone: null
+          status: 1
+          created_at: "2019-06-14T14:36:33.000Z"
+          updated_at: null
+        - id: "545392c0-9246-11e9-a2af-8b7909e6c274"
+          name: "Test"
+          email: "test@gmail.com"
+          password: "test"
+          phone: null
+          status: 1
+          created_at: "2019-06-19T03:57:02.000Z"
+          updated_at: null
+        - id: "71786530-9316-11e9-a2af-8b7909e6c274"
+          name: "Test"
+          email: "test@gmail.com"
+          password: "test"
+          phone: null
+          status: 1
+          created_at: "2019-06-20T04:46:46.000Z"
+          updated_at: null
+        - id: "73302940-9635-11e9-afc7-f10dfe709c5b"
+          name: "Test"
+          email: "test@gmail.com"
+          password: "098f6bcd4621d373cade4e832627b4f6"
+          phone: null,
+          status: 1
+          created_at: "2019-06-24T04:06:16.000Z"
+          updated_at: null
+        - id: "7b907fc0-9623-11e9-bd40-c7065795b994"
+          name: "Test"
+          email: "test@gmail.com"
+          password: "test"
+          phone: null
+          status: 1
+          created_at: "2019-06-24T01:57:55.000Z"
+          updated_at: null
+        - id: "88ed6bb0-9628-11e9-bd40-c7065795b994"
+          name: "Test"
+          email: "test@gmail.com"
+          password: "test"
+          phone: null
+          status: 1
+          created_at: "2019-06-24T02:34:05.000Z"
+          updated_at: null
+        - id: "b7c3da1d-7134-11e9-8597-e03f49b834fa"
+          name: "Test"
+          email: "test@gmail.com"
+          password: "098f6bcd4621d373cade4e832627b4f6"
+          phone: null
+          status: 1
+          created_at: "2019-05-08T08:57:55.000Z"
+          updated_at: "2019-06-28T02:22:30.000Z"
+        - id: "be92d4a0-98bf-11e9-930c-c11905d77c47"
+          name: "Test"
+          email: "test@gmail.com"
+          password: "098f6bcd4621d373cade4e832627b4f6"
+          phone: null
+          status: 1
+          created_at: "2019-06-27T09:41:31.000Z"
+          updated_at: null
+        - id: "c1ee0b80-9246-11e9-a2af-8b7909e6c274"
+          name: "Test"
+          email: "test@gmail.com"
+          password: "test"
+          phone: null
+          status: 1
+          created_at: "2019-06-19T04:00:06.000Z"
+          updated_at: null
+        - id: "d8610f60-994a-11e9-930c-c11905d77c47"
+          name: "Test"
+          email: "test@gmail.com"
+          password: "098f6bcd4621d373cade4e832627b4f6"
+          phone: null
+          status: 1
+          created_at: "2019-06-28T02:17:14.000Z"
+          updated_at: null
+      totalItems: 
+        type: "string"
+        example: "16"
+      message: 
+        type: "string"
+        example: "Success Insert"
+        
+  createUsers:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+        example: "Test2"
+      email: 
+        type: "string"
+        example: "test2@gmail.com"
+      password: 
+        type: "string"
+        example: "test"
+      phone: 
+        type: "string"
+        example: "082121180999"
+  createUsers-200:
+    properties:
+      code:
+        type: "string"
+        example: "200"
+      content:
+        type: "array"
+        items:
+         $ref: "#/definitions/createUsers-200"
+        example:
+        - fieldCount: 0
+          affectedRows: 1
+          insertId: 0
+          serverStatus: 2
+          warningCount: 0
+          message: ""
+          protocol41: true
+          changedRows: 0
+      totalItems: 
+        type: "string"
+        example: "success"
+      message: 
+        type: "string"
+        example: "Success Insert"
+        
+  updateUsers:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        example: "2eaba100-9d38-11e9-822b-9da9c40d63c4"
+      name: 
+        type: "string"
+        example: "Test"
+      email: 
+        type: "string"
+        example: "test@gmail.com"
+      password: 
+        type: "string"
+        example: "test"
+      phone: 
+        type: "string"
+        example: "08996017675"
+  updateUsers-200:
+    properties:
+      code:
+        type: "string"
+        example: "200"
+      content:
+        type: "array"
+        items:
+         $ref: "#/definitions/updateUsers-200"
+        example:
+        - fieldCount: 0
+          affectedRows: 0
+          insertId: 0
+          serverStatus: 2
+          warningCount: 0
+          message: "(Rows matched: 0  Changed: 0  Warnings: 0"
+          protocol41: true
+          changedRows: 0
+      totalItems: 
+        type: "string"
+        example: "success"
+      message: 
+        type: "string"
+        example: "Success Update"
+        
+  activeDeactiveUsers:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        example: "b7c3da1d-7134-11e9-8597-e03f49b834fa"
+      status:
+        type: "string"
+        example: 1
+  activeDeactiveUsers-200:
+    type: "object"
+    properties:
+      code:
+        type: "object"
+        example: "200"
+      content:
+        type: "array"
+        items:
+          $ref: "#/definitions/activeDeactiveUsers-200"
+        example:
+        - fieldCount: 0
+          affectedRows: 0
+          insertId: 0
+          serverStatus: 2
+          warningCount: 0
+          message: "(Rows matched: 0  Changed: 0  Warnings: 0"
+          protocol41: true
+          changedRows: 0
+      totalItems:
+        type: "object"
+        example: "success"
+      message:
+        type: "object"
+        example: "Success Update Status"  
+    
+  changePassUsers:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        example: "b7c3da1d-7134-11e9-8597-e03f49b834fa"
+      password: 
+        type: "string"
+        example: "wowo"
+  changePassUsers-200:
+    properties:
+      code:
+        type: "string"
+        example: "200"
+      content:
+        type: "array"
+        items:
+         $ref: "#/definitions/updateUsers-200"
+        example:
+        - fieldCount: 0
+          affectedRows: 1
+          insertId: 0
+          serverStatus: 2
+          warningCount: 0
+          message: "(Rows matched: 1  Changed: 1  Warnings: 0"
+          protocol41: true
+          changedRows: 1
+      totalItems: 
+        type: "string"
+        example: "success"
+      message: 
+        type: "string"
+        example: "Success Change Password"
+        
+  removeUsers:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        example: "=uuid()"
+  removeUsers-200:
+    properties:
+      data:
+        type: "array"
+        items:
+         $ref: "#/definitions/removeUsers-200"
+        example:
+        - fieldCount: 0
+          affectedRows: 0
+          insertId: 0
+          serverStatus: 2
+          warningCount: 0
+          message: ""
+          protocol41": true
+          changedRows": 0
+      totalItems: 
+        type: "string"
+        example: "success"
+      message: 
+        type: "string"
+        example: "Succes Remove id:=uuid()"
+      code:
+        type: "string"
+        example: "200"
+ 
+ #Role 
+  listRole:
+    properties:
+      code:
+        type: "string"
+        example: "200"
+      content:
+        type: "array"
+        items:
+         $ref: "#/definitions/listRole"
+        example:
+        - id: "1e81f500-8dd3-11e9-a4f4-c13f9c55f499"
+          name: "aaaa"
+          created_at: "2019-06-13T19:02:30.000Z"
+          updated_at: null
+        - id: "ec1a3a60-8e3a-11e9-a95f-05d42ced38e7"
+          name: "Supervisor"
+          created_at: "2019-06-14T07:25:33.000Z"
+          updated_at: null
+        - id: "486618f0-8f5a-11e9-afa8-7363aefa06f6"
+          name: "undefined"
+          created_at: "2019-06-15T17:42:33.000Z"
+          updated_at: null
+      totalItems: 
+        type: "string"
+        example: "3"
+      message: 
+        type: "string"
+        example: "Data Found"
+    
+  createRole:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+        example: "Supervisor"
+  createRole-200:
+    properties:
+      code:
+        type: "string"
+        example: "200"
+      content:
+        type: "array"
+        items:
+         $ref: "#/definitions/createRole-200"
+        example:
+        - fieldCount: 0
+          affectedRows: 1
+          insertId: 0
+          serverStatus: 2
+          warningCount: 0
+          message: ""
+          protocol41: true
+          changedRows: 0
+      totalItems: 
+        type: "string"
+        example: "success"
+      message: 
+        type: "string"
+        example: "Success Insert"
+        
+  updateRole:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+        example: "aaaa"
+      id:
+        type: "string"
+        example: "1e81f500-8dd3-11e9-a4f4-c13f9c55f499"
+  updateRole-200:
+    properties:
+      code:
+        type: "string"
+        example: "200"
+      content:
+        type: "array"
+        items:
+         $ref: "#/definitions/updateRole-200"
+        example:
+        - fieldCount: 0
+          affectedRows: 0
+          insertId: 0
+          serverStatus: 2
+          warningCount: 0
+          message: "(Rows matched: 0  Changed: 0  Warnings: 0"
+          protocol41: true
+          changedRows: 0
+      totalItems: 
+        type: "string"
+        example: "success"
+      message: 
+        type: "string"
+        example: "Success Update"
+        
+  removeRole:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        example: "s"
+  removeRole-200:
+    properties:
+      success:  
+        type: "boolean"
+        example: "true"
+      code:
+        type: "string"
+        example: "200"
+      content:
+        type: "array"
+        items:
+         $ref: "#/definitions/removeRole-200"
+        example:
+        - fieldCoun: 0
+          affectedRows: 0
+          insertId: 0
+          serverStatus: 2
+          warningCount: 0
+          message: ""
+          protocol41: true
+          changedRows: 0
+      totalItems: 
+        type: "string"
+        example: "success"
+      message: 
+        type: "string"
+        example: "Succes Remove id:s"
+     
+  roleById:
+    properties:
+      code:
+        type: "string"
+        example: "200"
+      content:
+        type: "array"
+        items:
+         $ref: "#/definitions/roleById"
+        example:
+        - code: 200
+          content: 
+            id: "1e81f500-8dd3-11e9-a4f4-c13f9c55f499"
+            name: "aaaa"
+            created_at: "2019-06-13T19:02:30.000Z"
+            updated_at: "2019-07-05T04:17:07.000Z"
+      totalItems: 
+        type: "string"
+        example: "1"
+      message: 
+        type: "string"
+        example: "Data Found"
+        
+#Schedule
+  listSchedule:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/listSchedule"
+        example:
+        - id: "08b867f0-98e0-11e9-9121-4b8b1b237674"
+          user_id: "vera"
+          date: "2019-10-10T00:00:00.000Z"
+          created_at: "2019-06-27T20:32:39.000Z"
+          created_by: "yog"
+          updated_at: 
+          updated_by: 
+      totalItems:
+        type: "object"
+        example: 1
+      message:
+        type: "object"
+        example: "Data Found"
+  
+  ByIdSchedule:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/ByIdSchedule"
+        example:
+        - id: "08b867f0-98e0-11e9-9121-4b8b1b237674"
+          user_id: "vera"
+          date: "2019-10-10T00:00:00.000Z"
+          created_at: "2019-06-27T20:32:39.000Z"
+          created_by: "yog"
+          updated_at: 
+          updated_by: 
+      totalItems:
+        type: "object"
+        example: 1
+      message:
+        type: "object"
+        example: "Data Found"
+        
+  AgentSchedule:
+    type: "object"
+    properties:
+      user_id:
+        type: "string" 
+        example: "vera"
+  AgentSchedule200:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/AgentSchedule200"
+        example:
+        - id: "08b867f0-98e0-11e9-9121-4b8b1b237674"
+          user_id: "vera"
+          date: "2019-10-10T00:00:00.000Z"
+          created_at: "2019-06-27T20:32:39.000Z"
+          created_by: "yog"
+          updated_at:
+          updated_by:
+      totalItems:
+        type: "object"
+        example: 1
+      message:
+        type: "object"
+        example: "Data Found" 
+        
+  UpdateSchedule:
+    type: "object"
+    properties:
+      user_id : 
+        type: "string" 
+        example: "vera"
+      date : 
+        type: "string" 
+        example: "2019-10-10"
+      created_by :
+        type: "string" 
+        example: "yog"
+      id : 
+        type: "string" 
+        example: "5d9eab10-9a0e-11e9-b9f4-0b5cc2592fee"
+  UpdateSchedule200:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/UpdateSchedule200"
+        example:
+        - fieldCount: 0
+          affectedRows: 0
+          insertId: 0
+          serverStatus: 34
+          warningCount: 0
+          message: "(Rows matched: 0  Changed: 0  Warnings: 0"
+          protocol41: true
+          changedRows: 0
+      totalItems:
+        type: "object"
+        example: "success"
+      message:
+        type: "object"
+        example: "Success Update"
+        
+  removeSchedule:
+    type: "object"
+    properties:
+      id : 
+        type: "string" 
+        example: "08b867f0-98e0-11e9-9121-4b8b1b237674"
+  removeSchedule200:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/removeSchedule200"
+        example:
+        - fieldCount: 0
+          affectedRows: 0
+          insertId: 0
+          serverStatus: 34
+          warningCount: 0
+          message: ""
+          protocol41: true
+          changedRows: 0
+      totalItems:
+        type: "object"
+        example: "success"
+      message:
+        type: "object"
+        example: "Succes Remove id:08b867f0-98e0-11e9-9121-4b8b1b237674"
+        
+#User Role
+  listUserRole:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/listUserRole"
+        example:
+        - id: "2"
+          user_id: "admin"
+          role_id: "admin"
+        - id: "3"
+          user_id: "be841a40-8358-11e9-ab6e-a93f65d43d59"
+          role_id: "2"
+        - id: "4"
+          user_id: "admin"
+          role_id: "admin"
+        - id: "5"
+          user_id: "be841a40-8358-11e9-ab6e-a93f65d43d59"
+          role_id: "2"
+        - id: "6"
+          user_id: "be841a40-8358-11e9-ab6e-a93f65d43d59"
+          role_id: "2"
+        - id: "7"
+          user_id: "4e7bb9b0-9249-11e9-a2af-8b7909e6c274"
+          role_id: "22"
+      totalItems:
+        type: "object"
+        example: "6"
+      message:
+        type: "object"
+        example: "Data Found"
+        
+  CreateURole:
+    type: "object"
+    properties:
+      user_id:
+        type: "string" 
+        example: "admin"
+      role_id:
+        type: "string" 
+        example: "admin"
+  CreateURole200:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/CreateURole200"
+        example:
+        - fieldCount: 0
+          affectedRows: 1
+          insertId: 4
+          serverStatus: 2
+          warningCount: 0
+          message: "(Rows matched: 0  Changed: 0  Warnings: 0"
+          protocol41: true
+          changedRows: 0
+      totalItems:
+        type: "object"
+        example: "success"
+      message:
+        type: "object"
+        example: "Success Insert"
+        
+  UpdateURole:
+    type: "object"
+    properties:
+      id:
+        type: "string" 
+        example: "1"
+      user_id:
+        type: "string" 
+        example: "romos"
+      role_id:
+        type: "string" 
+        example: "romos"
+  UpdateURole200:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/UpdateURole200"
+        example:
+        - fieldCount: "0"
+          affectedRows: "0"
+          insertId: "0"
+          serverStatus: "2"
+          warningCount: "0"
+          message: "(Rows matched: 0  Changed: 0  Warnings: 0"
+          protocol41: "true"
+          changedRows: "0"
+      totalItems:
+        type: "object"
+        example: "success"
+      message:
+        type: "object"
+        example: "Success Update"
+        
+  DeleteURole:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        example: "1"
+  DeleteURole200:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/DeleteURole200"
+        example:
+        - fieldCount: 0
+          affectedRows: 0
+          insertId: 0
+          serverStatus: 2
+          warningCount: 0
+          message: ""
+          protocol41: true
+          changedRows: 0
+      totalItems:
+        type: "object"
+        example: "success"
+      message:
+        type: "object"
+        example: "Success Remove id:1"
+        
+  userRoleById:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/userRoleById"
+        example:
+        - id: "2"
+          user_id: "admin"
+          role_id: "admin"
+      totalItems:
+        type: "object"
+        example: "1"
+      message:
+        type: "object"
+        example: "Data Found"
+        
+#Leave
+  ListLeave:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/ListLeave"
+        example:
+        - id: "03be9a70-8e7d-11e9-9289-89e30f499a30"
+          leave_type_id: "lorem"
+          start_at: "2019-10-10T00:00:00.000Z"
+          end_at: "2019-10-10T00:00:00.000Z"
+          status: "0"
+          user_id: "ronaldo"
+          leave_remark: "Males euy"
+          approved_by: 
+          approved_remark: 
+          rejected_by: 
+          rejected_remark: 
+          created_at: "2019-06-14T15:18:39.000Z"
+          updated_at: 
+        - id: "84f01c04-887c-11e9-ad15-e03f49b834fa"
+          leave_type_id: "ubah2"
+          start_at: "2019-10-12T00:00:00.000Z"
+          end_at: "2019-10-12T00:00:00.000Z"
+          status: "1"
+          user_id: "ronaldox2"
+          leave_remark: "Males euy2x"
+          approved_by: "Ronaldo"
+          approved_remark: "Di Approve OK"
+          rejected_by: "Ronaldo"
+          rejected_remark: "Di Approve OK"
+          created_at: 
+          updated_at: "2019-06-14T15:41:16.000Z"
+        - id: "9f2934a0-9244-11e9-a2af-8b7909e6c274"
+          leave_type_id: "lorem"
+          start_at: "2019-10-10T00:00:00.000Z"
+          end_at: "2019-10-10T00:00:00.000Z"
+          status: "0"
+          user_id: "ronaldo"
+          leave_remark: "Males euy"
+          approved_by: 
+          approved_remark: 
+          rejected_by: 
+          rejected_remark: 
+          created_at: "2019-06-19T03:44:49.000Z"
+          updated_at: 
+      totalItems:
+        type: "object"
+        example: "3"
+      message:
+        type: "object"
+        example: "Data Found"
+        
+  LeaveById:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/LeaveById"
+        example:
+        - id: "03be9a70-8e7d-11e9-9289-89e30f499a30"
+          leave_type_id: "lorem"
+          start_at: "2019-10-10T00:00:00.000Z"
+          end_at: "2019-10-10T00:00:00.000Z"
+          status: 0
+          user_id: "ronaldo"
+          leave_remark: "Males euy"
+          approved_by: 
+          approved_remark: 
+          rejected_by: 
+          rejected_remark: 
+          created_at: "2019-06-14T15:18:39.000Z"
+          updated_at: 
+      totalItems:
+        type: "object"
+        example: 1
+      message:
+        type: "object"
+        example: "Data Found"
+        
+  LeaveByAgentId:
+    type: "object"
+    properties:
+      user_id:
+        type: "string"
+        example: "ronaldo"
+  LeaveByAgentId200:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/LeaveByAgentId200"
+        example:
+        - id: "03be9a70-8e7d-11e9-9289-89e30f499a30"
+          leave_type_id: "lorem"
+          start_at: "2019-10-10T00:00:00.000Z"
+          end_at: "2019-10-10T00:00:00.000Z"
+          status: 0
+          user_id: "ronaldo"
+          leave_remark: "Males euy"
+          approved_by: 
+          approved_remark: 
+          rejected_by: 
+          rejected_remark: 
+          created_at: "2019-06-14T15:18:39.000Z"
+          updated_at: 
+        - id: "679880d0-994d-11e9-930c-c11905d77c47"
+          leave_type_id: "lorem"
+          start_at: "2019-10-10T00:00:00.000Z"
+          end_at: "2019-10-10T00:00:00.000Z"
+          status: 0
+          user_id: "ronaldo"
+          leave_remark: "Males euy"
+          approved_by: 
+          approved_remark: 
+          rejected_by: 
+          rejected_remark: 
+          created_at: "2019-06-28T02:35:34.000Z"
+          updated_at: 
+        - id: "9f2934a0-9244-11e9-a2af-8b7909e6c274"
+          leave_type_id: "lorem"
+          start_at: "2019-10-10T00:00:00.000Z"
+          end_at: "2019-10-10T00:00:00.000Z"
+          status: 0
+          user_id: "ronaldo"
+          leave_remark: "Males euy"
+          approved_by:
+          approved_remark: 
+          rejected_by: 
+          rejected_remark: 
+          created_at: "2019-06-19T03:44:49.000Z"
+          updated_at: 
+        - id: "a7e3a0d0-964a-11e9-8c62-d7ce9c1c053d"
+          leave_type_id: "lorem"
+          start_at: "2019-10-10T00:00:00.000Z"
+          end_at: "2019-10-10T00:00:00.000Z"
+          status: 0
+          user_id: "ronaldo"
+          leave_remark: "Males euy"
+          approved_by: 
+          approved_remark: 
+          rejected_by: 
+          rejected_remark: 
+          created_at: "2019-06-24T06:38:19.000Z"
+          updated_at: 
+        - id: "db134230-9267-11e9-a2af-8b7909e6c274"
+          leave_type_id: "lorem"
+          start_at: "2019-10-10T00:00:00.000Z"
+          end_at: "2019-10-10T00:00:00.000Z"
+          status: 0
+          user_id: "ronaldo"
+          leave_remark: "Males euy"
+          approved_by: 
+          approved_remark: 
+          rejected_by: 
+          rejected_remark: 
+          created_at: "2019-06-19T07:57:02.000Z"
+          updated_at: 
+      totalItems:
+        type: "object"
+        example: 5
+      message:
+        type: "object"
+        example: "Data Found"
+        
+  CreateLeave:
+    type: "object"
+    properties:
+      leave_type_id: 
+        type: "string"
+        example: "lorem"
+      start_at: 
+        type: "string"
+        example: "2019-10-10"
+      end_at: 
+        type: "string"
+        example: "2019-10-10"
+      status: 
+        type: "string"
+        example: "1"
+      user_id: 
+        type: "string"
+        example: "ronaldo"
+      leave_remark: 
+        type: "string"
+        example: "Males euy"
+  CreateLeave200:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/CreateLeave200"
+        example:
+        - fieldCount: 0
+          affectedRows: 1
+          insertId: 0
+          serverStatus: 2
+          warningCount: 0
+          message: ""
+          protocol41: true
+          changedRows: 0
+      totalItems:
+        type: "object"
+        example: "success"
+      message:
+        type: "object"
+        example: "Success Insert"
+        
+  UpdateLeave:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        example: "84f01c04-887c-11e9-ad15-e03f49b834fa"
+      leave_type_id: 
+        type: "string"
+        example: "ubah2"
+      start_at: 
+        type: "string"
+        example: "2019-10-12"
+      end_at: 
+        type: "string"
+        example: "2019-10-12"
+      status: 
+        type: "string"
+        example: "1"
+      user_id: 
+        type: "string"
+        example: "ronaldox2"
+      leave_remark: 
+        type: "string"
+        example: "Males euy2x"
+  UpdateLeave200:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/UpdateLeave200"
+        example:
+        - fieldCount: 0
+          affectedRows: 0
+          insertId: 0
+          serverStatus: 2
+          warningCount: 0
+          message: "(Rows matched: 0  Changed: 0  Warnings: 0"
+          protocol41: true
+          changedRows: 0
+      totalItems:
+        type: "object"
+        example: "success"
+      message:
+        type: "object"
+        example: "Success Update"
+        
+  RejectLeave:
+    type: "object"
+    properties:
+      rejected_by:
+        type: "string"
+        example: "ronaldo"
+      rejected_remark:
+        type: "string"
+        example: "Di approve OK"
+      id:
+        type: "string"
+        example: "84f01c04-887c-11e9-ad15-e03f49b834fa"
+  RejectLeave200:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/RejectLeave200"
+        example:
+        - fieldCount: 0
+          affectedRows: 0
+          insertId: 0
+          serverStatus: 2
+          warningCount: 0
+          message: "(Rows matched: 0  Changed: 0  Warnings: 0"
+          protocol41: true
+          changedRows: 0
+      totalItems:
+        type: "object"
+        example: "success"
+      message:
+        type: "object"
+        example: "Success Reject Leave"
+        
+  ApproveLeave:
+    type: "object"
+    properties:
+      approve_by:
+        type: "string"
+        example: "ronaldo"
+      approve_remark:
+        type: "string"
+        example: "Di approve OK"
+      id:
+        type: "string"
+        example: "84f01c04-887c-11e9-ad15-e03f49b834fa"
+  ApproveLeave200:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/ApproveLeave200"
+        example:
+        - fieldCount: 0
+          affectedRows: 0
+          insertId: 0
+          serverStatus: 2
+          warningCount: 0
+          message: "(Rows matched: 0  Changed: 0  Warnings: 0"
+          protocol41: true
+          changedRows: 0
+      totalItems:
+        type: "object"
+        example: "success"
+      message:
+        type: "object"
+        example: "Success Approve Leave"
+        
+  RemoveLeave:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        example: "7436542c-887c-11e9-ad15-e03f49b834fa"
+  RemoveLeave200:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/RemoveLeave200"
+        example:
+        - fieldCount: 0
+          affectedRows: 0
+          insertId: 0
+          serverStatus: 2
+          warningCount: 0
+          message: ""
+          protocol41: true
+          changedRows: 0
+      totalItems:
+        type: "object"
+        example: "success"
+      message:
+        type: "object"
+        example: "Succes Remove id:7436542c-887c-11e9-ad15-e03f49b834fa"
+        
+#Exchange Schedules
+  ListExSchedule:
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/ListExSchedule"
+        example:
+        - id: "00e409e0-9957-11e9-930c-c11905d77c47"
+          old_date: "2019-10-11T00:00:00.000Z"
+          new_date: "2019-11-11T00:00:00.000Z"
+          status: 1
+          user_id: "Rizky QA"
+          remark: "Testing by QA"
+          approved_by: "Dev QA"
+          approved_remark: "testing approve"
+          rejected_by: 
+          rejected_remark:
+          created_at: "2019-06-28T03:44:16.000Z"
+          updated_at: "2019-06-28T03:46:54.000Z"
+        - id: "386fa3e0-926a-11e9-a2af-8b7909e6c274"
+          old_date: "2019-10-11T00:00:00.000Z"
+          new_date: "2019-11-11T00:00:00.000Z"
+          status: 0
+          user_id: "ronaldo"
+          remark: "males bangun siang"
+          approved_by: 
+          approved_remark: 
+          rejected_by: 
+          rejected_remark: 
+          created_at: "2019-06-19T08:13:57.000Z"
+          updated_at: 
+        - id: "635b3cd0-964e-11e9-8c62-d7ce9c1c053d"
+          old_date": "2019-10-12T00:00:00.000Z"
+          new_date": "2019-11-12T00:00:00.000Z"
+          status": 0
+          user_id": "devy"
+          remark": "males bangun siang"
+          approved_by": 
+          approved_remark": 
+          rejected_by": 
+          rejected_remark": 
+          created_at": "2019-06-24T07:05:03.000Z"
+          updated_at":
+        - id: "7407bdc0-8f54-11e9-b4de-1de72edf4474"
+          old_date: "2019-10-11T00:00:00.000Z"
+          new_date: "2019-11-11T00:00:00.000Z"
+          status: 2
+          user_id: "ronaldo"
+          remark: "males bangun siang"
+          approved_by: 
+          approved_remark: 
+          rejected_by: "Ronaldo C"
+          rejected_remark: " Terserah kamu aja"
+          created_at: "2019-06-15T17:00:49.000Z"
+          updated_at: "2019-07-02T07:26:37.000Z"
+        - id: "a84d0fb0-9c9a-11e9-9453-c7b12f58c028"
+          old_date: "2019-10-11T00:00:00.000Z"
+          new_date: "2019-11-11T00:00:00.000Z"
+          status: 0
+          user_id: "ronaldo"
+          remark: "males bangun siang"
+          approved_by: 
+          approved_remark: 
+          rejected_by:
+          rejected_remark: 
+          created_at: "2019-07-02T07:26:07.000Z"
+          updated_at: 
+        - id: "b44481a0-9951-11e9-930c-c11905d77c47"
+          old_date: "2019-10-12T00:00:00.000Z"
+          new_date: "2019-11-12T00:00:00.000Z"
+          status: 0
+          user_id: "devy"
+          remark: "males bangun siang"
+          approved_by: 
+          approved_remark: 
+          rejected_by: 
+          rejected_remark: 
+          created_at: "2019-06-28T03:06:20.000Z"
+          updated_at:
+      totalItems:
+        type: "object"
+        example: 7
+      message:
+        type: "object"
+        example: "Data Found"
+
+  ByIDExSchedule:
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/ByIDExSchedule"
+        example:
+        - id: "00e409e0-9957-11e9-930c-c11905d77c47"
+          old_date: "2019-10-11T00:00:00.000Z"
+          new_date: "2019-11-11T00:00:00.000Z"
+          status: 1
+          user_id: "Rizky QA"
+          remark: "Testing by QA"
+          approved_by: "Dev QA"
+          approved_remark: "testing approve"
+          rejected_by: 
+          rejected_remark:
+          created_at: "2019-06-28T03:44:16.000Z"
+          updated_at: "2019-06-28T03:46:54.000Z"
+      totalItems:
+        type: "object"
+        example: 1
+      message:
+        type: "object"
+        example: "Data Found"
+
+  byAgentExSchedule:
+    type: "object"
+    properties:
+      user_id:
+        type: "string"
+        example: "Rizky QA"
+  byAgentExSchedule200:
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/ByIDExSchedule"
+        example:
+        - id: "00e409e0-9957-11e9-930c-c11905d77c47"
+          old_date: "2019-10-11T00:00:00.000Z"
+          new_date: "2019-11-11T00:00:00.000Z"
+          status: 1
+          user_id: "Rizky QA"
+          remark: "Testing by QA"
+          approved_by: "Dev QA"
+          approved_remark: "testing approve"
+          rejected_by: 
+          rejected_remark:
+          created_at: "2019-06-28T03:44:16.000Z"
+          updated_at: "2019-06-28T03:46:54.000Z"
+      totalItems:
+        type: "object"
+        example: 1
+      message:
+        type: "object"
+        example: "Data Found"
+
+  CreateExSchedule:
+    type: "object"
+    properties:
+      old_date:
+        type: "string"
+        example: "2019-10-11"
+      new_date:
+        type: "string"
+        example: "2019-11-11"
+      user_id:
+        type: "string"
+        example: "ronaldo"
+      remark:
+        type: "string"
+        example: "males bangun siang"
+  CreateExSchedule200:
+    type: "object"
+    properties:
+      code:
+        type: "string"
+        example: "200"
+      content:
+        type: "array"
+        items:
+         $ref: "#/definitions/CreateExSchedule200"
+        example:
+        - fieldCount: 0
+          affectedRows: 1
+          insertId: 0
+          serverStatus: 2
+          warningCount: 0
+          message: ""
+          protocol41: true
+          changedRows: 0
+      totalItems: 
+        type: "string"
+        example: "success"
+      message: 
+        type: "string"
+        example: "Success Insert"
+    
+  updateES:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        example: "7212b670-8f52-11e9-9f23-3d48e9ef15c8"
+      old_date:
+        type: "string"
+        example: "2019-10-11"
+      new_date:
+        type: "string"
+        example: "2019-11-11"
+      user_id:
+        type: "string"
+        example: "ronaldo"
+      remark:
+        type: "string"
+        example: "males bangun siang"
+  updateES-200:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/updateES-200"
+        example:
+        - fieldCount: 0
+          affectedRows: 0
+          insertId: 0
+          serverStatus: 2
+          warningCount: 0
+          message: "(Rows matched: 0  Changed: 0  Warnings: 0"
+          protocol41: true
+          changedRows: 0
+      totalItems:
+        type: "object"
+        example: "success"
+      message:
+        type: "object"
+        example: "Success Update"
+        
+  rejectES:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        example: "7407bdc0-8f54-11e9-b4de-1de72edf4474"
+      rejected_by:
+        type: "string"
+        example: "Ronaldo C"
+      rejected_remark:
+        type: "string"
+        example: "Terserah kamu aja"
+  rejectES-200:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/rejectES-200"
+        example:
+        - fieldCount: 0
+          affectedRows: 1
+          insertId: 0
+          serverStatus: 2
+          warningCount: 0
+          message: "(Rows matched: 1  Changed: 1  Warnings: 0"
+          protocol41: true
+          changedRows: 1
+      totalItems:
+        type: "object"
+        example: "success"
+      message:
+        type: "object"
+        example: "Success Reject"
+        
+  approveES:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        example: "c949d50b-8885-11e9-ad15-e03f49b834fa"
+      approved_by:
+        type: "string"
+        example: "Ronaldo C"
+      approved_remark:
+        type: "string"
+        example: "Terserah kamu aja"
+  approveES-200:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/approveES-200"
+        example:
+        - fieldCount: 0
+          affectedRows: 0
+          insertId: 0
+          serverStatus: 2
+          warningCount: 0
+          message: "(Rows matched: 0  Changed: 0  Warnings: 0"
+          protocol41: true
+          changedRows: 0
+      totalItems:
+        type: "object"
+        example: "success"
+      message:
+        type: "object"
+        example: "Success Approve"
+        
+  removeES:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        example: "c949d50b-8885-11e9-ad15-e03f49b834fa"
+      approved_by:
+        type: "string"
+        example: "Ronaldo C"
+      approved_remark:
+        type: "string"
+        example: "Terserah kamu aja"
+  removeES-200:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/removeES-200"
+        example:
+        - fieldCount: 0
+          affectedRows: 0
+          insertId: 0
+          serverStatus: 2
+          warningCount: 0
+          message: ""
+          protocol41: true
+          changedRows: 0
+      totalItems:
+        type: "object"
+        example: "success"
+      message:
+        type: "object"
+        example: "Succes Remove id:c949d50b-8885-11e9-ad15-e03f49b834fa"
+        
+#Exchange Attendance
+  listEA:
+    properties:
+      Success:  
+        type: "boolean"
+        example: "true"
+      Code:
+        type: "string"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+         $ref: "#/definitions/listEA"
+        example:
+        - id: "7407bdc0-8f54-11e9-b4de-1de72edf4474"
+          old_date: "2019-10-11T00:00:00.000Z"
+          new_date": "2019-11-11T00:00:00.000Z"
+          status: 2
+          user_id: "ronaldo"
+          remark: "males bangun siang"
+          approved_by: null
+          approved_remark: null
+          rejected_by: "Ronaldo C"
+          rejected_remark: " Terserah kamu aja"
+          created_at: "2019-06-15T17:00:49.000Z"
+          updated_at: "2019-06-15T17:09:05.000Z"
+      totalItems: 
+        type: "string"
+        example: "1"
+      message: 
+        type: "string"
+        example: "Data Found"
+        
+  getByIdEA:
+    properties:
+      Success:  
+        type: "boolean"
+        example: "true"
+      Code:
+        type: "string"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+         $ref: "#/definitions/getByIdEA"
+        example:
+        - id: "386fa3e0-926a-11e9-a2af-8b7909e6c274"
+          old_date: "2019-10-11T00:00:00.000Z"
+          new_date: "2019-11-11T00:00:00.000Z"
+          status: 0
+          user_id: "ronaldo"
+          remark: "males bangun siang"
+          approved_by: null
+          approved_remark: null
+          rejected_by: null
+          rejected_remark: null
+          created_at: "2019-06-19T08:13:57.000Z"
+          updated_at: null
+      totalItems: 
+        type: "string"
+        example: "1"
+      message: 
+        type: "string"
+        example: "Data Found"
+  
+  createEA:
+    type: "object"
+    properties:
+      old_date:
+        type: "string"
+        example: "2019-10-11"
+      new_date:
+        type: "string"
+        example: "2019-11-11"
+      user_id:
+        type: "string"
+        example: "ronaldo"
+      remark:
+        type: "string"
+        example: "males bangun siang"
+  createEA-200:
+    properties:
+      Success:  
+        type: "boolean"
+        example: "true"
+      Code:
+        type: "string"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+         $ref: "#/definitions/createEA-200"
+        example:
+        - fieldCount: 0
+          affectedRows: 1
+          insertId: 0
+          serverStatus: 2
+          warningCount: 0
+          message: ""
+          protocol41: true
+          changedRows: 0
+      totalItems: 
+        type: "string"
+        example: "success"
+      message: 
+        type: "string"
+        example: "Success Insert"
+        
+  updateEA:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        example: "7212b670-8f52-11e9-9f23-3d48e9ef15c8"
+      old_date:
+        type: "string"
+        example: "2019-10-11"
+      new_date:
+        type: "string"
+        example: "2019-11-11"
+      user_id:
+        type: "string"
+        example: "ronaldo"
+      remark:
+        type: "string"
+        example: "males bangun siang"
+  updateEA-200:
+    properties:
+      Success:  
+        type: "boolean"
+        example: "true"
+      Code:
+        type: "string"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+         $ref: "#/definitions/updateEA-200"
+        example:
+        - fieldCount: 0
+          affectedRows: 0
+          insertId: 0
+          serverStatus: 2
+          warningCount: 0
+          message: "(Rows matched: 0  Changed: 0  Warnings: 0"
+          protocol41: true
+          changedRows: 0      
+      totalItems: 
+        type: "string"
+        example: "success"
+      message: 
+        type: "string"
+        example: "Success Update"
+        
+  rejectEA:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        example: "7407bdc0-8f54-11e9-b4de-1de72edf4474"
+      rejected_by:
+        type: "string"
+        example: "Ronaldo C"
+      rejected_remark:
+        type: "string"
+        example: "Terserah kamu aja"
+  rejectEA-200:
+    properties:
+      Success:  
+        type: "boolean"
+        example: "true"
+      Code:
+        type: "string"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+         $ref: "#/definitions/rejectEA-200"
+        example:
+        - fieldCount: 0
+          affectedRows: 1
+          insertId: 0
+          serverStatus: 2
+          warningCount: 0
+          message: "(Rows matched: 1  Changed: 1  Warnings: 0"
+          protocol41: true
+          changedRows: 1  
+      totalItems: 
+        type: "string"
+        example: "success"
+      message: 
+        type: "string"
+        example: "Success Reject"
+        
+  approveEA:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        example: "c949d50b-8885-11e9-ad15-e03f49b834fa"
+      approved_by:
+        type: "string"
+        example: "Ronaldo C"
+      approved_remark:
+        type: "string"
+        example: "Terserah kamu aja"
+  approveEA-200:
+    properties:
+      Success:  
+        type: "boolean"
+        example: "true"
+      Code:
+        type: "string"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+         $ref: "#/definitions/approveEA-200"
+        example:
+        - fieldCount: 0
+          affectedRows: 0
+          insertId: 0
+          serverStatus: 2
+          warningCount: 0
+          message: "(Rows matched: 0  Changed: 0  Warnings: 0"
+          protocol41: true
+          changedRows: 0
+      totalItems: 
+        type: "string"
+        example: "success"
+      message: 
+        type: "string"
+        example: "Success Approve"
+        
+  removeEA:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        example: "c949d50b-8885-11e9-ad15-e03f49b834fa"
+      approved_by:
+        type: "string"
+        example: "Ronaldo C"
+      approved_remark:
+        type: "string"
+        example: "Terserah kamu aja"
+  removeEA-200:
+    properties:
+      Success:  
+        type: "boolean"
+        example: "true"
+      Code:
+        type: "string"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+         $ref: "#/definitions/removeEA-200"
+        example:
+        - fieldCount: 0
+          affectedRows: 0
+          insertId: 0
+          serverStatus: 2
+          warningCount: 0
+          message: ""
+          protocol41: true
+          changedRows: 0
+      totalItems: 
+        type: "string"
+        example: "success"
+      message: 
+        type: "string"
+        example: "Succes Remove id:c949d50b-8885-11e9-ad15-e03f49b834fa"
+
+#Attendance
+  AttendanceList:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/AttendanceList"
+        example:
+        - id: "89b44520-8e88-11e9-8fac-61c9aba467c8"
+          user_id: "ronaldo"
+          attend_date: "2019-10-10T00:00:00.000Z"
+          in_image: "image.jpeg"
+          out_image: "image.jpeg"
+          in_time: "2019-10-10T10:10:00.000Z"
+          out_time: "2019-10-10T10:10:01.000Z"
+          created_at: "2019-06-14T16:41:08.000Z"
+          updated_at: "2019-06-14T16:42:10.000Z"
+      totalItems:
+        type: "object"
+        example: 1
+      message:
+        type: "object"
+        example: "Data Found"
+  
+  AttendanceById:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/AttendanceById"
+        example:
+        - id: "89b44520-8e88-11e9-8fac-61c9aba467c8"
+          user_id: "ronaldo"
+          attend_date: "2019-10-10T00:00:00.000Z"
+          in_image: "image.jpeg"
+          out_image: "image.jpeg"
+          in_time: "2019-10-10T10:10:00.000Z"
+          out_time: "2019-10-10T10:10:01.000Z"
+          created_at: "2019-06-14T16:41:08.000Z"
+          updated_at: "2019-06-14T16:42:10.000Z"
+      totalItems:
+        type: "object"
+        example: 1
+      message:
+        type: "object"
+        example: "Data Found"
+        
+  AttendanceAgent:
+    type: "object"
+    properties:
+      user_id: 
+        type: "string"
+        example: "ronaldo"
+  AttendanceAgent200:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/AttendanceAgent200"
+        example:
+        - id: "89b44520-8e88-11e9-8fac-61c9aba467c8"
+          user_id: "ronaldo"
+          attend_date: "2019-10-10T00:00:00.000Z"
+          in_image: "image.jpeg"
+          out_image: "image.jpeg"
+          in_time: "2019-10-10T10:10:00.000Z"
+          out_time: "2019-10-10T10:10:01.000Z"
+          created_at: "2019-06-14T16:41:08.000Z"
+          updated_at: "2019-06-14T16:42:10.000Z"
+      totalItems:
+        type: "object"
+        example: 1
+      message:
+        type: "object"
+        example: "Data Found"
+        
+  AttendanceCI:
+    type: "object"
+    properties:
+      user_id: 
+        type: "string"
+        example: "ronaldo"
+      attend_date: 
+        type: "string"
+        example: "2019-10-10" 
+      in_image: 
+        type: "string"
+        example: "image.jpeg"
+      in_time: 
+        type: "string"
+        example: "2019-10-10 10:10:00"
+  AttendanceCI200:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/AttendanceCI200"
+        example:
+      totalItems:
+        type: "object"
+        example: 0
+      message:
+        type: "object"
+        example: "Agent is already check in"
+        
+  AttendanceCO:
+    type: "object"
+    properties:
+      user_id: 
+        type: "string"
+        example: "ronaldo"
+      attend_date: 
+        type: "string"
+        example: "2019-10-10" 
+      out_image: 
+        type: "string"
+        example: "image.jpeg"
+      out_time: 
+        type: "string"
+        example: "2019-10-10 10:10:01"
+  AttendanceCO200:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/AttendanceCO200"
+        example:
+      totalItems:
+        type: "object"
+        example: 0
+      message:
+        type: "object"
+        example: "Agent is already check out"
+        
+  updateAttendance:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        example: "84f01c04-887c-11e9-ad15-e03f49b834fa"
+      leave_type_id:
+        type: "string"
+        example: "ubah2"
+      start_at:
+        type: "string"
+        example: "2019-10-12"
+      end_at:
+        type: "string"
+        example: "2019-10-12"
+      status:
+        type: "string"
+        example: "1"
+      user_id:
+        type: "string"
+        example: "ronaldox2"
+      leave_remark:
+        type: "string"
+        example: "Males euy2x"
+  updateAttendance-200:
+    properties:
+      Success:  
+        type: "boolean"
+        example: "true"
+      Code:
+        type: "string"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+         $ref: "#/definitions/updateAttendance-200"
+        example:
+        - fieldCount: 0
+          affectedRows: 0
+          insertId: 0
+          serverStatus: 2
+          warningCount: 0
+          message: "(Rows matched: 0  Changed: 0  Warnings: 0"
+          protocol41: true
+          changedRows: 0
+      totalItems: 
+        type: "string"
+        example: "success"
+      message: 
+        type: "string"
+        example: "Success Update"
+        
+  rejectAttendance:
+    type: "object"
+    properties:
+      rejected_by:
+        type: "string"
+        example: "Ronaldo"
+      rejected_remark:
+        type: "string"
+        example: "Di Approve OK"
+      id:
+        type: "string"
+        example: "84f01c04-887c-11e9-ad15-e03f49b834fa"
+  rejectAttendance-200:
+    properties:
+      Success:  
+        type: "boolean"
+        example: "true"
+      Code:
+        type: "string"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+         $ref: "#/definitions/rejectAttendance-200"
+        example:
+        - fieldCount: 0
+          affectedRows: 0
+          insertId: 0
+          serverStatus: 2
+          warningCount: 0
+          message: "(Rows matched: 0  Changed: 0  Warnings: 0"
+          protocol41: true
+          changedRows: 0
+      totalItems: 
+        type: "string"
+        example: "success"
+      message: 
+        type: "string"
+        example: "Success Reject Leave"
+        
+  approveAttendance:
+    type: "object"
+    properties:
+      approved_by:
+        type: "string"
+        example: "Ronaldo"
+      approved_remark:
+        type: "string"
+        example: "Di Approve OK"
+      id:
+        type: "string"
+        example: "84f01c04-887c-11e9-ad15-e03f49b834fa"
+  approveAttendance-200:
+    properties:
+      Success:  
+        type: "boolean"
+        example: "true"
+      Code:
+        type: "string"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+         $ref: "#/definitions/approveAttendance-200"
+        example:
+        - fieldCount: 0
+          affectedRows: 0
+          insertId: 0
+          serverStatus: 2
+          warningCount: 0
+          message: "(Rows matched: 0  Changed: 0  Warnings: 0"
+          protocol41: true
+          changedRows: 0
+      totalItems: 
+        type: "string"
+        example: "success"
+      message: 
+        type: "string"
+        example: "Success Approve Leave"
+        
+  removeAttendance:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        example: "7436542c-887c-11e9-ad15-e03f49b834fa"
+  removeAttendance-200:
+    properties:
+      Success:  
+        type: "boolean"
+        example: "true"
+      Code:
+        type: "string"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+         $ref: "#/definitions/removeAttendance-200"
+        example:
+        - fieldCount: 0
+          affectedRows: 0
+          insertId: 0
+          serverStatus: 2
+          warningCount: 0
+          message: ""
+          protocol41: true
+          changedRows: 0
+      totalItems: 
+        type: "string"
+        example: "success"
+      message: 
+        type: "string"
+        example: "Succes Remove id:7436542c-887c-11e9-ad15-e03f49b834fa"
+        
+#Faq
+  ListFaq:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/ListFaq"
+        example:
+        - id: "015fcf00-9635-11e9-afc7-f10dfe709c5b"
+          question: "assalamualaikum"
+          answer: "waalaikumsalam"
+          status: "1"
+          created_at: "2019-06-24T04:03:05.000Z"
+          updated_at:
+        - id: "083bfcd0-8d2b-11e9-97ab-19fcaaa31532"
+          question: "undefined"
+          answer: "undefined"
+          status: "1"
+          created_at: "2019-06-12T22:59:17.000Z"
+          updated_at:
+        - id: "0dfbc160-8d25-11e9-b23a-b161c48b0676"
+          question: "undefined"
+          answer: "undefined"
+          status: "0"
+          created_at: "2019-06-12T22:16:29.000Z"
+          updated_at: "2019-06-12T22:28:58.000Z"
+        - id: "18c83210-9246-11e9-a2af-8b7909e6c274"
+          question: "How to use register?"
+          answer: "Register with email and activate it"
+          status: "1"
+          created_at: "2019-06-19T03:55:22.000Z"
+          updated_at: 
+        - id: "32ff6d60-9309-11e9-a2af-8b7909e6c274"
+          question: "How to use register?"
+          answer: "Register with email and activate it"
+          status: "1"
+          created_at: "2019-06-20T03:11:58.000Z"
+          updated_at: 
+        - id: "3e883450-9629-11e9-bd40-c7065795b994"
+          question: "How to use register?"
+          answer: "Register with email and activate it"
+          status: "1"
+          created_at: "2019-06-24T02:39:09.000Z"
+          updated_at:
+        - id: "7506ba20-9268-11e9-a2af-8b7909e6c274"
+          question: "H"
+          answer: "R"
+          status: "1"
+          created_at: "2019-06-19T08:01:20.000Z"
+          updated_at: 
+        - id: "77e4acc0-9268-11e9-a2af-8b7909e6c274"
+          question: "H"
+          answer: "R"
+          status: "1"
+          created_at: "2019-06-19T08:01:25.000Z"
+          updated_at:
+        - id: "89e10b10-9265-11e9-a2af-8b7909e6c274"
+          question: "hi"
+          answer: "hello"
+          status: "1"
+          created_at: "2019-06-19T07:40:26.000Z"
+          updated_at: 
+        - id: "a1a75100-9265-11e9-a2af-8b7909e6c274"
+          question: "How to use register?"
+          answer: "Register with email and activate it"
+          status: "1"
+          created_at: "2019-06-19T07:41:06.000Z"
+          updated_at:
+        - id: "d6c3dab0-9266-11e9-a2af-8b7909e6c274"
+          question: "How to use DTP-DSA?"
+          answer: "open website DTP-DSA"
+          status: "1"
+          created_at: "2019-06-19T07:49:45.000Z"
+          updated_at: 
+        - id: "f6360900-962a-11e9-bd40-c7065795b994"
+          question: "How to use register?"
+          answer: "Register with email and activate it"
+          status: "1"
+          created_at: "2019-06-24T02:51:27.000Z"
+          updated_at: 
+        - id: "f9db51f0-8d24-11e9-b462-ed9bc0b2d9a2"
+          question: "sample question"
+          answer: "anwer question"
+          status: "1"
+          created_at: "0000-00-00 00:00:00"
+          updated_at: "0000-00-00 00:00:00"
+        - id: "fcc4a780-8d2a-11e9-97ab-19fcaaa31532"
+          question: "undefined"
+          answer: "undefined"
+          status: "1"
+          created_at: "2019-06-12T22:58:58.000Z"
+          updated_at: 
+        - id: "ff7d1350-9265-11e9-a2af-8b7909e6c274"
+          question: "hi"
+          answer: "hello"
+          status: "1"
+          created_at: "2019-06-19T07:43:44.000Z"
+          updated_at: 
+      TotalItems:
+        type: "object"
+        example: "15"
+      Message:
+        type: "object"
+        example: "Data Found"
+        
+  CreateFaq:
+    type: "object"
+    properties:
+      question:
+        type: "string"
+        example: "How to use register?"
+      answer:
+        type: "string"
+        example: "Register with email and activate it"
+  CreateFaq200:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/CreateFaq200"
+        example:
+        - fieldCount: 0
+          affectedRows: 1
+          insertId: 0
+          serverStatus: 2
+          warningCount: 0
+          message: ""
+          protocol41: true
+          changedRows: 0
+      totalItems:
+        type: "object"
+        example: "success"
+      message:
+        type: "object"
+        example: "Success Insert"
+        
+  UpdateFaq:
+    type: "object"
+    properties:
+      question:
+        type: "string"
+        example: "How to use register?"
+      answer:
+        type: "string"
+        example: "Register with email and activate it."
+      status:
+        type: "string"
+        example: 1
+      id:
+        type: "string"
+        example: "45cef240-8183-11e9-84c7-d5d6293e12e1"
+  UpdateFaq200:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/UpdateFaq200"
+        example:
+        - fieldCount: 0
+          affectedRows: 0
+          insertId: 0
+          serverStatus: 2
+          warningCount: 0
+          message: "(Rows matched: 0  Changed: 0  Warnings: 0"
+          protocol41: true
+          changedRows: 0
+      totalItems:
+        type: "object"
+        example: "success"
+      message:
+        type: "object"
+        example: "Success Update"
+        
+  DeleteFaq:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        example: "7cc2c9d0-9ca8-11e9-8867-2f13e0d492bf"
+  DeleteFaq200:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/DeleteFaq200"
+        example:
+        - fieldCount: 0
+          affectedRows: 0
+          insertId: 0
+          serverStatus: 2
+          warningCount: 0
+          message: ""
+          protocol41: true
+          changedRows: 0
+      totalItems:
+        type: "object"
+        example: "success"
+      message:
+        type: "object"
+        example: "Success Remove Faq"
+        
+#SetupGlobal
+  listSetupGlobal:
+    properties:
+      Success:  
+        type: "boolean"
+        example: "true"
+      Code:
+        type: "string"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+         $ref: "#/definitions/listSetupGlobal"
+        example:
+        - id: "0d7d72ad-6ffd-11e9-8210-e03f49b834fa"
+          key: "term_and_condition"
+          name: "Term and Condition"
+          value: "<h1>Syarat & Ketentuan Pengujian</h1>\r\n<br>\r\n<p>Syarat dan ketentuan untuk pengujian produk digital seperti berikut ini:</p>\r\n<br>\r\n<p>\r\n\t<strong>Heuristik Evaluation</strong>\r\n\t<ul>\r\n\t\t<li>Materi Penjelasan Produk</li>\r\n\t\t<li>Link Aplikasi/APK/API Produk</li>\r\n\t</ul>\r\n</p>\r\n\r\n<p>\r\n\t<strong>Usabilty Testing</strong>\r\n\t<ul>\r\n\t\t<li>Materi Penjelasan Produk</li>\r\n\t\t<li>Link Aplikasi/APK/API Produk</li>\r\n\t</ul>\r\n</p>\r\n\r\n<p>\r\n\t<strong>Software Testing</strong>\r\n\t<ul>\r\n\t\t<li>Dokumen Requirement Produk</li>\r\n\t\t<li>Dokumen API List</li>\r\n\t\t<li>Sampel Data</li>\r\n\t</ul>\r\n</p>\r\n\r\n\r\n<p>\r\n\t<strong>Alih Kelula</strong>\r\n\t<ul>\r\n\t\t<li>Dokumen Deskripsi Produk</li>\r\n\t\t<li>Dokumen Teknis (Software Architecture/ Konfiguration Server)</li>\r\n\t\t<li>Dokumen Frequently Asked Question (FAQ) Produk </li>\r\n\t\t<li>Dokumen Manual Produk </li>\r\n\t\t<li>Dokumen Sympthom List </li>\r\n\t\t<li>Dokumen Bisnis Proses Penanganan Operasional</li>\r\n\t</ul>\r\n</p>"
+          created_at: null
+          updated_at: null
+        - id: "1412f55f-6ffd-11e9-8210-e03f49b834fa"
+          key: "about_us"
+          name: "About US"
+          value: "<p>\r\n\tTentang Digital Touch Point Digital Service Assurance Digital Touch Point Digital Service Assurance (DTP DSA) merupakan portal digital yang berperan dalam mempermudah Product Owner (PO) untuk mengajukan pengujian produk. Melalui pengujian ini akan menjamin kualitas produk sebelum digunakan oleh user. Portal ini digunakan untuk internal Telkom Group. Adapun layanan yang disediakan antara lain: Heuristic Evaluation, Usability Testing, Software Testing, dan Alih Kelola\r\n</p>\r\n"
+          created_at: null
+          updated_at": null
+        - id: "1e9a51aa-6ffd-11e9-8210-e03f49b834fa"
+          key: "banner_img"
+          name: "Top Banner Image"
+          value: "https://i.ibb.co/b1tPYb1/shutterstock-114687277-e1424737386142.png"
+          created_at: null
+          updated_at": null
+        - id: "23e18698-925e-11e9-a151-e03f49b834fa"
+          key: "about_us_thumb"
+          name: "About US Image Thumbnail"
+          value: "https://i.ibb.co/b1tPYb1/shutterstock-114687277-e1424737386142.png"
+          created_at: null
+          updated_at: null
+        - id: "355b35a2-925e-11e9-a151-e03f49b834fa"
+          key: "visi_misi_thumb"
+          name: "Visi and Misi Thumbnail"
+          value: "https://i.ibb.co/b1tPYb1/shutterstock-114687277-e1424737386142.png"
+          created_at: null
+          updated_at: null
+        - id: "37a6c64c-6ffd-11e9-8210-e03f49b834fa"
+          key": "top_banner_desc"
+          name": "Top Banner Description"
+          value": "Digital Touch Point Digital Service Assurance (DTP DSA) merupakan portal digital yang berperan dalam mempermudah Product Owner (PO) untuk mengajukan pengujian produk. Melalui pengujian ini akan menjamin kualitas produk sebelum digunakan oleh user. Portal ini digunakan untuk internal Telkom Group"
+          created_at: null
+          updated_at: null
+        - id: "73bdffac-6ffe-11e9-8210-e03f49b834fa"
+          key": "address"
+          name": "Footer Address"
+          value": "Menara Bandung Digital Valley, Jl. Gegerkalong Hilir No.47, Sukarasa, Sukasari, Kota Bandung, Jawa Barat 40152"
+          created_at": null
+          updated_at": null
+        - id: "838a97d9-6ffe-11e9-8210-e03f49b834fa"
+          key": "email"
+          name": "Footer Email"
+          value": "ronaldochristover@gmail.com"
+          created_at": null
+          updated_at": null
+        - id: "8b518944-6ffe-11e9-8210-e03f49b834fa"
+          key: "phone"
+          name: "Footer Phone"
+          value: "082121180999 (Ronaldo)"
+          created_at: null
+          updated_at: null
+        - id: "ac973a3b-9258-11e9-a3b0-e03f49b834fa"
+          key: "about_us_heading"
+          name: "About US Heading"
+          value: "<h3>TENTANG DIGITAL SERVICE ASSURANCE</h3>"
+          created_at: null
+          updated_at: null
+        - id: "b3e71b9d-925f-11e9-a151-e03f49b834fa"
+          key: "top_banner_img"
+          name: "Top Banner Image"
+          value: null
+          created_at: null
+          updated_at: null
+        - id: "bf0226b6-9258-11e9-a3b0-e03f49b834fa"
+          key: "visi_misi_head"
+          name: "Visi and Mission Heading"
+          value: "<h3>VISI & MISI</h3>\r\n"
+          created_at: null
+          updated_at: null
+        - id: "cb9e955b-9258-11e9-a3b0-e03f49b834fa"
+          key: "visi_misi"
+          name: "Visi and Misi Content"
+          value: "<p>\r\n\t<strong>VISI</strong> \r\n\t<p>\r\n\t\tMemberikan kepuasan kepada pengguna dan keuntungan bisnis bagi perusahaan. \r\n\t</p>\r\n\t<strong>MISI</strong>\r\n\t<p>\r\n\t\tMembangun kualitas produk digital Telkom Group bertaraf internasional.\r\n\t</p>\r\n</p>"
+          created_at: null
+          updated_at: null
+      totalItems: 
+        type: "string"
+        example: "13"
+      message: 
+        type: "string"
+        example: "Data Found"
+        
+  getSetupById:
+    properties:
+      Success:  
+        type: "boolean"
+        example: "true"
+      Code:
+        type: "string"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+         $ref: "#/definitions/getSetupById"
+        example:
+        - id: "2a2903a0-9899-11e9-bae1-4f95dd5ecfe9"
+          key: "about_us"
+          head: "About US"
+          value: "<p>\r\n\tTentang Digital Touch Point Digital Service Assurance Digital Touch Point Digital Service Assurance (DTP DSA) merupakan portal digital yang berperan dalam mempermudah Product Owner (PO) untuk mengajukan pengujian produk. Melalui pengujian ini akan menjamin kualitas produk sebelum digunakan oleh user. Portal ini digunakan untuk internal Telkom Group. Adapun layanan yang disediakan antara lain: Heuristic Evaluation, Usability Testing, Software Testing, dan Alih Kelola\r\n</p>\r\n"
+          image: "https://i.ibb.co/b1tPYb1/shutterstock-114687277-e1424737386142.png"
+          created_at: "2019-06-27T12:05:21.000Z"
+          updated_at: "2019-06-27T12:05:21.000Z"
+      totalItems: 
+        type: "string"
+        example: "1"
+      message: 
+        type: "string"
+        example: "Data Found"
+        
+  VisiMisiSetupGlobal:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/VisiMisiSetupGlobal"
+        example:
+        - id: "036e34c0-9ec9-11e9-9558-05f63e708f4f"
+          key: "visi_misi"
+          head: "MISI"
+          value: "<p>\r\n\t<strong>MISI</strong>\r\n\t<p>\r\n\t\tMembangun kualitas produk digital Telkom Group bertaraf internasional.\r\n\t</p>\r\n</p>"
+          image: "https://i.ibb.co/b1tPYb1/shutterstock-114687277-e1424737386142.png"
+          created_at: "2019-07-05T02:02:59.000Z"
+          updated_at: "2019-07-05T02:02:59.000Z"
+        - id: "938a4212-989a-11e9-b95b-e03f49b834fa"
+          key: "visi_misi"
+          head: "VISI"
+          value: "<p>\r\n\t<strong>VISI</strong> \r\n\t<p>\r\n\t\tMemberikan kepuasan kepada pengguna dan keuntungan bisnis bagi perusahaan. \r\n\t</p>\r\n</p>"
+          image: "https://i.ibb.co/b1tPYb1/shutterstock-114687277-e1424737386142.png"
+          created_at: "2019-06-29T20:03:30.000Z"
+          updated_at: "2019-07-05T02:02:51.000Z"
+      TotalItems:
+        type: "object"
+        example: 2
+      Message:
+        type: "object"
+        example: "Data Found"
+
+  AboutUsSetupGlobal:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/AboutUsSetupGlobal"
+        example:
+        - id: "2a2903a0-9899-11e9-bae1-4f95dd5ecfe9"
+          key: "about_us"
+          head: "TENTANG DIGITAL SERVICE ASSURANCE"
+          sub_head: 
+          value: "Tentang Digital Touch Point Digital Service Assurance Digital Touch Point Digital Service Assurance (DTP DSA) merupakan portal digital yang berperan dalam mempermudah Product Owner (PO) untuk mengajukan pengujian produk. Melalui pengujian ini akan menjamin kualitas produk sebelum digunakan oleh user. Portal ini digunakan untuk internal Telkom Group. Adapun layanan yang disediakan antara lain: Heuristic Evaluation, Usability Testing, Software Testing, dan Alih Kelola."
+          image: "https://i.ibb.co/b1tPYb1/shutterstock-114687277-e1424737386142.pngundefined"
+          created_at: "2019-06-27T12:05:21.000Z"
+          updated_at: "2019-06-27T12:57:42.000Z"
+      TotalItems:
+        type: "object"
+        example: 1
+      Message:
+        type: "object"
+        example: "Data Found"
+
+  FooterSetupGlobal:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/FooterSetupGlobal"
+        example:
+        - id: "f81ae186-9a6d-11e9-8899-e03f49b834fa"
+          address: "Menara Bandung Digital Valley, Jl. Gegerkalong Hilir No.47, Sukarasa, Sukasari, Kota Bandung, Jawa Barat 40152"
+          phone: "082121180999 (Ronaldo)"
+          email: "ronaldochristover@gmail.com"
+          created_at: "2019-06-28T09:39:19.000Z"
+          updated_at:
+      TotalItems:
+        type: "object"
+        example: 1
+      Message:
+        type: "object"
+        example: "Data Found"
+
+  HomeBannerSetupGlobal:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/HomeBannerSetupGlobal"
+        example:
+        - id: "c9fa8011-989a-11e9-b95b-e03f49b834fa"
+          key: "home_banner"
+          head: "Digital Touch Point\r\nDigital Service Assurance"
+          sub_head: null
+          value: "Digital Touch Point Digital Service Assurance (DTP DSA) merupakan portal digital yang berperan dalam mempermudah Product Owner (PO) untuk mengajukan pengujian produk. Melalui pengujian ini akan menjamin kualitas produk sebelum digunakan oleh user. Portal ini digunakan untuk internal Telkom Group."
+          image: "assets/QAA.png"
+          created_at: "2019-06-29T20:03:33.000Z"
+          updated_at: 
+      TotalItems:
+        type: "object"
+        example: 1
+      Message:
+        type: "object"
+        example: "Data Found"
+
+  createSetupGlobal:
+    type: "object"
+    properties:
+      key:
+        type: "string"
+        example: "am"
+      value:
+        type: "string"
+        example: "test i"
+  createSetupGlobal-200:
+    properties:
+      Success:  
+        type: "boolean"
+        example: "true"
+      Code:
+        type: "string"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+         $ref: "#/definitions/createSetupGlobal-200"
+        example:
+        - fieldCount: 0
+          affectedRows: 1
+          insertId: 0
+          serverStatus: 2
+          warningCount: 0
+          message: ""
+          protocol41: true
+          changedRows: 0
+      totalItems: 
+        type: "string"
+        example: "success"
+      message: 
+        type: "string"
+        example: "Success Insert"
+        
+  updateSetupGlobal:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        example: "6f5aff70-9342-11e9-bfe1-e90dc6ed0847"
+      key:
+        type: "string"
+        example: "am"
+      value:
+        type: "string"
+        example: "test you"
+  updateSetupGlobal-200:
+    properties:
+      Success:  
+        type: "boolean"
+        example: "true"
+      Code:
+        type: "string"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+         $ref: "#/definitions/updateSetupGlobal-200"
+        example:
+        - fieldCount: 0
+          affectedRows: 0
+          insertId: 0
+          serverStatus: 2
+          warningCount: 0
+          message: "(Rows matched: 0  Changed: 0  Warnings: 0"
+          protocol41: true
+          changedRows: 0
+      totalItems: 
+        type: "string"
+        example: "success"
+      message: 
+        type: "string"
+        example: "Success Update"
+        
+  DeleteSG:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        example: "dabedd90-9d10-11e9-8cc4-d10584b02704"
+  DeleteSG200:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/DeleteSG200"
+        example:
+        - fieldCount: 0
+          affectedRows: 0
+          insertId: 0
+          serverStatus: 2
+          warningCount: 0
+          message: ""
+          protocol41: true
+          changedRows: 0
+      totalItems:
+        type: "object"
+        example: "success"
+      message:
+        type: "object"
+        example: "Success Remove"
+        
+#Request
+  ListRequest:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/ListRequest"
+        example:
+        - id: "035aae80-8e3b-11e9-a95f-05d42ced38e7"
+          product_name": "Emago"
+          product_description": "Deskripsi Emago"
+          service_id": "1"
+          status": "1"
+          created_at": "2019-06-14T07:26:12.000Z"
+          updated_at": 
+          attachment_requirement": "lorem"
+          requested_by": "Ronaldo"
+          checked_by": 
+        - id: "27c68a70-9276-11e9-a2af-8b7909e6c274"
+          product_name": "Emago"
+          product_description": "Deskripsi Emago"
+          service_id": "1"
+          status": "1"
+          created_at": "2019-06-19T09:39:23.000Z"
+          updated_at": 
+          attachment_requirement": "lorem"
+          requested_by": "Ronaldo"
+          checked_by":
+        - id: "49265b40-9245-11e9-a2af-8b7909e6c274"
+          product_name": "Emago"
+          product_description": "Deskripsi Emago"
+          service_id": "1"
+          status": "1"
+          created_at": "2019-06-19T03:49:34.000Z"
+          updated_at": 
+          attachment_requirement": "lorem"
+          requested_by": "Ronaldo"
+          checked_by":
+        - id: "903f2cb0-8de4-11e9-9678-c1194b37ad4f"
+          product_name": "Emago"
+          product_description": "Deskripsi Emago"
+          service_id": "1"
+          status": "1"
+          created_at": "22019-06-13T21:07:22.000Z"
+          updated_at": 
+          attachment_requirement": "lorem"
+          requested_by": "Ronaldo"
+          checked_by":
+        - id: "df884d50-8e3a-11e9-a95f-05d42ced38e7"
+          product_name": "Emago"
+          product_description": "Deskripsi Emago"
+          service_id": "1"
+          status": "1"
+          created_at": "2019-06-14T07:25:12.000Z"
+          updated_at": 
+          attachment_requirement": "lorem"
+          requested_by": "Ronaldo"
+          checked_by":
+        - id: "f1c59060-8de3-11e9-87fd-0f64f26466de"
+          product_name": "Emago"
+          product_description": "Deskripsi Emago"
+          service_id": "1"
+          status": "1"
+          created_at": "2019-06-13T21:02:56.000Z"
+          updated_at": 
+          attachment_requirement": "lorem"
+          requested_by": "Ronaldo"
+          checked_by":
+      TotalItems:
+        type: "object"
+        example: "6"
+      Message:
+        type: "object"
+        example: "Data Found"
+        
+  DeleteRequest:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        example: "331458a9-8de4-11e9-9f55-e03f49b834fa"
+  DeleteReq200:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/DeleteReq200"
+        example:
+        - fieldCount: 0
+          affectedRows: 0
+          insertId: 0
+          serverStatus: 2
+          warningCount: 0
+          message: ""
+          protocol41: true
+          changedRows: 0
+      totalItems:
+        type: "object"
+        example: "success"
+      message:
+        type: "object"
+        example: "Succes Remove id:331458a9-8de4-11e9-9f55-e03f49b834fa"
+        
+  CreateRequest:
+    type: "object"
+    properties:
+      product_name: 
+        type: "string"
+        example: "Emago"
+      product_description: 
+        type: "string"
+        example: "Deskripsi Emago"
+      service_id: 
+        type: "string"
+        example: "1" 
+      status: 
+        type: "string"
+        example: "1"
+      attachment_requirement:
+        type: "string"
+        example: "lorem"
+      requested_by: 
+        type: "string"
+        example: "Ronaldo"
+  CreateReq200:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: 200
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/CreateReq200"
+        example:
+        - product_name: "Emago"
+          product_description: "Deskripsi Emago"
+          service_id: "1"
+          status: "1"
+          attachment_requirement: "lorem"
+          requested_by: "Ronaldo"
+      totalItems:
+        type: "object"
+        example: "success"
+      message:
+        type: "object"
+        example: "Success Insert"
+        
+  UpdateRequest:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        example: "331458a9-8de4-11e9-9f55-e03f49b834fa"
+      product_name: 
+        type: "string"
+        example: "EmagXo"
+      product_description: 
+        type: "string"
+        example: "Deskripsi Emago"
+      service_id: 
+        type: "string"
+        example: "1" 
+      status: 
+        type: "string"
+        example: "1"
+      attachment_requirement:
+        type: "string"
+        example: "lorem"
+      requested_by: 
+        type: "string"
+        example: "Ronaldo"
+  UpdateReq200:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/UpdateRequest"
+        example:
+        - fieldCount: 0
+          affectedRows: 0
+          insertId: 0
+          serverStatus: 2
+          warningCount: 0
+          message: "(Rows matched: 0  Changed: 0  Warnings: 0"
+          protocol41: "true"
+          changedRows: 0
+      totalItems:
+        type: "object"
+        example: "success"
+      message:
+        type: "object"
+        example: "Success Update"
+
+#Service
+  listService:
+    properties:
+      Success:  
+        type: "boolean"
+        example: "true"
+      Code:
+        type: "string"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+         $ref: "#/definitions/listService"
+        example:
+        - id: "0b33bb90-8b13-11e9-ab86-15112f6ac35b"
+          name: "Alih Kelola"
+          image_thumb: "sample.jpeg"
+          short_desc: "Layanan alih kelola suatu produk persiapan operasional."
+          description: "lorem ipsum panjang"
+          created_at: "2019-06-12T11:00:00.000Z"
+          updated_at: "2019-06-19T15:10:34.000Z"
+        - id: "0f3c3d3e-90b7-11e9-9944-e03f49b834fa"
+          name: "Usability Testing"
+          image_thumb: null
+          short_desc: "Pengujian Produk digital kepada pengguna melalui proses observasi."
+          description: null
+          created_at: null
+          updated_at: null
+        - id: "2452d830-8d2b-11e9-9df3-a30dc5fac168"
+          name: "Heuristic Evalutation"
+          image_thumb: "sample.jpeg"
+          short_desc: "Pengujian Produk digital mengacu pada 10 prinsip umum desain interaksi."
+          description: "lorem ipsum panjang"
+          created_at": "2019-06-12T23:00:04.000Z"
+          updated_at: null
+        - id: "6e12e8c0-9276-11e9-a2af-8b7909e6c274"
+          name: "test2"
+          image_thumb: ""
+          short_desc: ""
+          description: ""
+          created_at: "2019-06-19T09:41:21.000Z"
+          updated_at: null
+        - id: "a143c3ae-87b9-11e9-bed2-e03f49b834fa"
+          name: "Software Testing"
+          image_thumb: "aaa.jpg"
+          short_desc: "Pengujian Performansi dan fungsional pada produk digital."
+          description: null
+          created_at: null
+          updated_at: null
+      totalItems: 
+        type: "string"
+        example: "5"
+      message: 
+        type: "string"
+        example: "Data Found"
+  
+  createService:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        example: "2"
+      name:
+        type: "string"
+        example: "test2"
+      image_thumb: 
+        type: "string"
+        example: ""
+      short_desc:
+        type: "string"
+        example: ""
+      description:
+        type: "string"
+        example: ""
+  createService-200:
+    properties:
+      Success:  
+        type: "boolean"
+        example: true
+      Code:
+        type: "string"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+         $ref: "#/definitions/createService-200"
+        example:
+        - fieldCount: 0
+          affectedRows: 1
+          insertId: 0
+          serverStatus: 2
+          warningCount: 0
+          message: ""
+          protocol41: true
+          changedRows: 0
+      totalItems: 
+        type: "string"
+        example: "success"
+      message: 
+        type: "string"
+        example: "Success Insert"
+        
+  UpdateService:
+    type: "object"
+    properties:
+      id: 
+        type: "string"
+        example: "c3b1d310-93dc-11e9-b0f2-757b3d866f79"
+      name: 
+        type: "string"
+        example: "test2"
+      image_thumb: 
+        type: "string"
+        example: "img.jpg"
+      short_desc: 
+        type: "string"
+        example: "lorem ipsum"
+      description: 
+        type: "string"
+        example: "lorem ipsum doloren amet"
+  UpdateService200:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/UpdateService200"
+        example:
+        - fieldCount: 0
+          affectedRows: 0
+          insertId: 0
+          serverStatus: 2
+          warningCount: 0
+          message: "(Rows matched: 0  Changed: 0  Warnings: 0"
+          protocol41: true
+          changedRows: 0
+      totalItems:
+        type: "object"
+        example: "success"
+      message:
+        type: "object"
+        example: "Success Update"
+        
+#Request History
+  ListReqH:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/ListReqH"
+        example:
+        - id: "81f17ca0-93c8-11e9-a2af-8b7909e6c274"
+          request_id: "ddddd"
+          log: ""
+          created_at: "2019-06-21T02:01:24.000Z"
+          updated_at: 
+      totalItems:
+        type: "object"
+        example: 1
+      message:
+        type: "object"
+        example: "Data Found"
+        
+  UpdateReqH:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        example: "35a44a90-93f9-11e9-8a31-33a2bef83a2e"
+      request_id:
+        type: "string"
+        example: "123123"
+      log:
+        type: "string"
+        example: "lorem ipsum amet doloret"
+  UpdateReqH200:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/UpdateReqH200"
+        example:
+        - fieldCount: 0
+          affectedRows": 0
+          insertId": 0
+          serverStatus": 2
+          warningCount": 0
+          message": "(Rows matched: 0  Changed: 0  Warnings: 0"
+          protocol41": true
+          changedRows": 0
+      totalItems:
+        type: "object"
+        example: "success"
+      message:
+        type: "object"
+        example: "Success Update"
+        
+  DeleteReqH:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        example: "35a44a90-93f9-11e9-8a31-33a2bef83a2e"
+  DeleteReqH200:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/UpdateReqH200"
+        example:
+        - fieldCount: 0
+          affectedRows": 0
+          insertId": 0
+          serverStatus": 2
+          warningCount": 0
+          message": ""
+          protocol41": true
+          changedRows": 0
+      totalItems:
+        type: "object"
+        example: "success"
+      message:
+        type: "object"
+        example: "Succes Remove id:35a44a90-93f9-11e9-8a31-33a2bef83a2e"
+
+  CreateReqH:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        example: 3
+      request_id: 
+        type: "string"
+        example: "ddddd"
+      log: 
+        type: "string"
+        example: ""
+  CreateReqH200:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/CreateReqH200"
+        example:
+        - fieldCount: 0
+          affectedRows: 1
+          insertId: 0
+          serverStatus: 2
+          warningCount: 0
+          message: ""
+          protocol41: true
+          changedRows: 0
+      totalItems:
+        type: "object"
+        example: "success"
+      message:
+        type: "object"
+        example: "Success Insert"
+  
+  ReqHistoryById:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/ReqHistoryById"
+        example:
+        - id: "4863de30-962d-11e9-bd40-c7065795b994"
+          request_id: "123123"
+          log: "lorem ipsum amet doloret"
+          created_at: "2019-06-24T03:08:04.000Z"
+          updated_at: 
+      totalItems:
+        type: "object"
+        example: 1
+      message:
+        type: "object"
+        example: "Data Found"
+        
+#Request Report
+  listRequestReport:
+    properties:
+      Success:  
+        type: "boolean"
+        example: "true"
+      Code:
+        type: "string"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+         $ref: "#/definitions/listRequestReport"
+        example:
+        - id: "b7b27d40-96f6-11e9-8c62-d7ce9c1c053d"
+          request_id: "adad"
+          name: "lorem ip"
+          description: "lorem ipsum"
+          path: "var/www/html/img.jps"
+          created_at: "2019-06-25T03:09:59.000Z"
+          updated_at: "2019-06-25T03:09:59.000Z"
+          created_by: "test"
+          updated_by: "test"
+        - id: "d776b6f0-96fb-11e9-8c62-d7ce9c1c053d"
+          request_id: "adad"
+          name: "lorem ip"
+          description: "lorem ipsum"
+          path: "var/www/html/img.jps"
+          created_at: "2019-06-25T03:46:40.000Z"
+          updated_at: "2019-06-25T03:46:40.000Z"
+          created_by: "test"
+          updated_by: "test"
+      totalItems: 
+        type: "string"
+        example: "2"
+      message: 
+        type: "string"
+        example: "Data Found"
+        
+  createRequestReport:
+    type: "object"
+    properties:
+      request_id:
+        type: "string"
+        example: "adad"
+      name:
+        type: "string"
+        example: "lorem ip"
+      description: 
+        type: "string"
+        example: "lorem ipsum"
+      path:
+        type: "string"
+        example: "var/www/html/img.jps"
+      user:
+        type: "string"
+        example: "test"
+  createRequestReport-200:
+    properties:
+      Success:  
+        type: "boolean"
+        example: true
+      Code:
+        type: "string"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+         $ref: "#/definitions/createRequestReport-200"
+        example:
+        - fieldCount: 0
+          affectedRows: 1
+          insertId: 0
+          serverStatus: 2
+          warningCount: 0
+          message: ""
+          protocol41: true
+          changedRows: 0
+      totalItems: 
+        type: "string"
+        example: "success"
+      message: 
+        type: "string"
+        example: "Success Insert"
+        
+  updateRequestReport:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        example: "8a9541f0-93fc-11e9-9ae2-5d381d154beb"
+      request_id:
+        type: "string"
+        example: "sssss"
+      name:
+        type: "string"
+        example: "lorem ip"
+      description: 
+        type: "string"
+        example: "lorem ipsum"
+      path:
+        type: "string"
+        example: "var/www/html/img.jps"
+      user:
+        type: "string"
+        example: "test"
+  updateRequestReport-200:
+    properties:
+      success:  
+        type: "boolean"
+        example: true
+      code:
+        type: "string"
+        example: "200"
+      content:
+        type: "array"
+        items:
+         $ref: "#/definitions/updateRequestReport-200"
+        example:
+        - fieldCount: 0
+          affectedRows: 0
+          insertId: 0
+          serverStatus: 2
+          warningCount: 0
+          message: "(Rows matched: 0  Changed: 0  Warnings: 0"
+          protocol41: true
+          changedRows: 0
+      totalItems: 
+        type: "string"
+        example: "success"
+      message: 
+        type: "string"
+        example: "Success Update"
+        
+  deleteRequestReport:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        example: "8a9541f0-93fc-11e9-9ae2-5d381d154beb"
+  deleteRequestReport-200:
+    properties:
+      success:  
+        type: "boolean"
+        example: true
+      code:
+        type: "string"
+        example: "200"
+      content:
+        type: "array"
+        items:
+         $ref: "#/definitions/deleteRequestReport-200"
+        example:
+        - fieldCount: 0
+          affectedRows: 0
+          insertId: 0
+          serverStatus: 2
+          warningCount: 0
+          message: ""
+          protocol41": true
+          changedRows": 0
+      totalItems: 
+        type: "string"
+        example: "success"
+      message: 
+        type: "string"
+        example: "Succes Remove id:8a9541f0-93fc-11e9-9ae2-5d381d154beb"
+  
+#Request Attachment
+  ReqAttList:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/ReqAttList"
+        example:
+        - id: "ee50b630-96fd-11e9-8c62-d7ce9c1c053d"
+          request_id: "1"
+          name: "img.jpg"
+          path: "var/www/upload/img.jpg"
+          created_at: "2019-06-25T04:01:38.000Z"
+          updated_at: null
+      totalItems:
+        type: "object"
+        example: 1
+      message:
+        type: "object"
+        example: "Data Found"
+        
+  UpdateReqAtt:
+    type: "object"
+    properties:
+      id: 
+        type: "string"
+        example: "dedaad80-93f3-11e9-b099-53017cd1c173"
+      request_id: 
+        type: "string"
+        example: "1231"
+      name: 
+        type: "string"
+        example: "img.jpg"
+      path: 
+        type: "string"
+        example: "var/www/upload/img.jpg"
+  UpdateReqAtt200:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/UpdateReqAtt200"
+        example:
+        - fieldCount: 0
+          affectedRows: 0
+          insertId: 0
+          serverStatus: 2
+          warningCount: 0
+          message: "(Rows matched: 0  Changed: 0  Warnings: 0"
+          protocol41: true
+          changedRows: 0
+      totalItems:
+        type: "object"
+        example: "success"
+      message:
+        type: "object"
+        example: "Success Update"
+        
+  DeleteReqAtt:
+    type: "object"
+    properties:
+      id: 
+        type: "string"
+        example: "dedaad80-93f3-11e9-b099-53017cd1c173"
+  DeleteReqAtt200:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/DeleteReqAtt200"
+        example:
+        - fieldCount: 0
+          affectedRows: 0
+          insertId: 0
+          serverStatus: 2
+          warningCount: 0
+          message: ""
+          protocol41: true
+          changedRows: 0
+      totalItems:
+        type: "object"
+        example: "success"
+      message:
+        type: "object"
+        example: "Success Remove id:dedaad80-93f3-11e9-b099-53017cd1c173"
+        
+  CreateReqAtt:
+    type: "object"
+    properties:
+      request_id: 
+        type: "string"
+        example: "1"
+      name: 
+        type: "string"
+        example: "img.jpg"
+      path: 
+        type: "string"
+        example: "var/www/upload/img.jpg"
+  CreateReqAtt200:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/CreateReqAtt200"
+        example:
+        - fieldCount: 0
+          affectedRows: 0
+          insertId: 0
+          serverStatus: 2
+          warningCount: 0
+          message: ""
+          protocol41: true
+          changedRows: 0
+      totalItems:
+        type: "object"
+        example: "success"
+      message:
+        type: "object"
+        example: "Success Insert"
+  
+  ReqAttById:
+    type: "object"
+    properties:
+      Code:
+        type: "object"
+        example: "200"
+      Content:
+        type: "array"
+        items:
+          $ref: "#/definitions/ReqAttList"
+        example:
+        - id: "ee50b630-96fd-11e9-8c62-d7ce9c1c053d"
+          request_id: "1"
+          name: "img.jpg"
+          path: "var/www/upload/img.jpg"
+          created_at: "2019-06-25T04:01:38.000Z"
+          updated_at:
+      totalItems:
+        type: "object"
+        example: 1
+      message:
+        type: "object"
+        example: "Data Found"
+        
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"
+  
+  
